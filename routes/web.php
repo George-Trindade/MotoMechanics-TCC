@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AgendamentosController;
+use App\Http\Controllers\HorariosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +23,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+//Agendamentos
+Route::get('/agendamentos/', [AgendamentosController::class, 'index'])->name('agendamentos.index');
+Route::get('/agendamentos/novo', [AgendamentosController::class, 'create'])->name('agendamentos.create');
+Route::post('/agendamentos/novo', [AgendamentosController::class, 'store'])->name('agendamentos.store');
+Route::get('/agendamentos/novo/horarios/{datadigitada}', [HorariosController::class, 'horario'])->name('agendamentos.horario');
+
