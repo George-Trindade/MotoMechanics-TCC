@@ -9,10 +9,13 @@ class Agendamento extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'sevico',
+        'veiculo_id',
+        'servico',
         'date',
         'horario',
     ];
-
+    public function veiculo(){
+        return $this->belongsTo(Veiculo::class,'veiculo_id');
+    }
 
 }

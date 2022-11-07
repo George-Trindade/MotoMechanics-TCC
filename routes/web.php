@@ -15,7 +15,10 @@ use App\Http\Controllers\HorariosController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login1');
+});
+Route::get('/2', function () {
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
