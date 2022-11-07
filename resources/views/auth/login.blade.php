@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="http://tcc.test/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://tcc.test/assets/img/motocicletaBranco">
+  <link rel="icon" type="image/png" href="../assets/img/motocicletaBranco.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     MotoMechanics
@@ -63,7 +63,7 @@
       <div class="row">
         <div class="col-lg-4 col-md-6 ml-auto mr-auto">
           <div class="card card-login">
-            <form class="form" method="post" action="">
+            <form class="form" method="post" action="{{ route('login') }}">
               <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <div class="card-header card-header-primary text-center">
                 <img src="http://tcc.test/assets/img/motocicletaBRanco.png" width="65" height="65">
@@ -88,7 +88,7 @@
                       <i class="material-icons"></i>
                     </span>
                   </div>
-                  <input type="email" class="form-control" name='email' id='email' placeholder="Email...">
+                  <input type="email" class="form-control" name='email' id='email' placeholder="Email..." for="email" :value="__('Email')" required autofocus>
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -96,7 +96,7 @@
                       <i class="material-icons">  </i>
                     </span>
                   </div>
-                  <input type="password" class="form-control" name='password' id='password' placeholder="Senha...">
+                  <input type="password" class="form-control" name='password' id='password' placeholder="Senha..." for="password" :value="__('Password')" required autocomplete="current-password" >
                 </div>
               </div>
               <div class="container text-center">
@@ -105,15 +105,17 @@
                 </a>
               </div>
               <div class="container text-center" style="font-weight: bold; padding-bottom: 6px;">
-                <a style="color:#bd2b2b;display:block;padding-bottom: 6px;">Esqueci minha senha &gt;</a>
-                <a style="color:#bd2b2b">Não possuo cadastro &gt;</a>
+                @if (Route::has('password.request'))
+                    <a style="color:#bd2b2b;display:block;"  href="{{ route('password.request') }}">Esqueci minha senha &gt;</a>
+                @endif
+                <a style="color:#bd2b2b"  href="{{ route('register') }}">Não possuo cadastro &gt;</a>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-    <footer class="footer">
+    <footer class="footer" style="padding-top: 0px;">
       <div class="container">
         <nav class="float-left">
           <ul>

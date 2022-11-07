@@ -3307,7 +3307,7 @@ textarea.form-control
     text-align: center;
     vertical-align: middle;
 
-    color: #525f7f;
+    color: #830000;
     border: 1px solid transparent;
     border-radius: .25rem;
     background-color: transparent;
@@ -3323,7 +3323,7 @@ textarea.form-control
 {
     text-decoration: none;
 
-    color: #525f7f;
+    color: #830000;
 }
 .btn:focus,
 .btn.focus
@@ -3677,8 +3677,8 @@ fieldset:disabled a.btn
 .btn-default
 {
     color: #fff;
-    border-color: #172b4d;
-    background-color: #172b4d;
+    border-color: #bd2b2b;
+    background-color: #bd2b2b;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
     text-align: center;
 }
@@ -8881,7 +8881,7 @@ button.bg-dark:focus
 
 .bg-default
 {
-    background-color: #172b4d !important;
+    background-color: #bd2b2b !important;
 }
 
 a.bg-default:hover,
@@ -8889,7 +8889,7 @@ a.bg-default:focus,
 button.bg-default:hover,
 button.bg-default:focus
 {
-    background-color: #0b1526 !important;
+    background-color: #830000 !important;
 }
 
 .bg-white
@@ -20051,7 +20051,7 @@ a.btn-icon-only
     font-size: .875rem;
     font-weight: 600;
 
-    color: #525f7f;
+    color: #830000;
 }
 
 .form-control
@@ -24205,7 +24205,7 @@ button.bg-lighter:focus
 
 .bg-gradient-default
 {
-    background: linear-gradient(87deg, #172b4d 0, #1a174d 100%) !important;
+    background: linear-gradient(180deg, #a34f4f61 0, #bd2b2b 100%) !important;
 }
 
 .bg-gradient-white
@@ -24561,7 +24561,7 @@ button.section-darker:focus
 
 .bg-gradient-default
 {
-    background: linear-gradient(87deg, #172b4d 0, #1a174d 100%) !important;
+    background: linear-gradient(180deg, #a34f4f61 0, #bd2b2b 100%) !important;
 }
 
 .bg-gradient-white

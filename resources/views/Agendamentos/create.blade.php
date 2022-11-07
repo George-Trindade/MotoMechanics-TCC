@@ -17,6 +17,8 @@
     <!-- Page plugins -->
     <!-- Argon CSS -->
     <link rel="stylesheet" href="http://tcc.test/assets/css/argon.css?v=1.2.0" type="text/css">
+    <link rel="stylesheet" href="http://tcc.test/assets/css/loading.css" type="text/css">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
 
@@ -29,12 +31,18 @@
             //document.getElementById('datadigitada').innerHTML = capturando;
 
             $.getJSON('/agendamentos/novo/horarios/' + capturando,
+            $('#conteudo').css({display:'none'})+
+            $('#div-carregamento').css({display:'flex'})+
+            $('#carregamento').css({display:'block'}),
                 function(data) {
-                    $('#select-horarios').find('option').remove();
+                    $('#select-horarios').find('option').remove()+
+                    $('#div-carregamento').css({display:'none'})+
+                    $('#carregamento').css({display:'none'})+
+                    $('#conteudo').css({display:'block'});
                     $.each(data,
                         function(indice, valor) {
                             $('<option>').val(valor.hora).text(valor.hora).appendTo('#select-horarios');
-                        }
+                        },
                     );
                 }
             );
@@ -48,6 +56,7 @@
 </head>
 
 <body>
+
     <!-- Sidenav -->
     <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
         <div class="scrollbar-inner">
@@ -98,7 +107,7 @@
     <!-- Main content -->
     <div class="main-content" id="panel">
         <!-- Topnav -->
-        <nav class="navbar navbar-top navbar-expand navbar-dark bg-default border-bottom">
+        <nav class="navbar navbar-top navbar-expand navbar-dark bg-default border-bottom" style="padding-bottom: 8px; padding-top: 8px;">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Search form -->
@@ -171,14 +180,21 @@
       </div>
     </div>
     <!-- Page content -->
+
     <div class=" container-fluid mt--9" id="pag">
-                        <div class="row">
-                            <div class="col-xl-11 order-xl-1">
+
+                        <div class="row" >
+
+                            <div class="col-xl-11 order-xl-1" >
+
                                 <div class="card">
 
-                                    <div class="card-body">
-                                        <form action="{{route('agendamentos.store')}}" method="post">
+                                    <div class="card-body" >
+
+                                        <form action="{{route('agendamentos.store')}}" method="post" >
+                                        <span><div class="body-loader" id="div-carregamento"><span class="loader" id="carregamento"></span></div></span>
                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                            <span id="conteudo">
                                             <h4 class="heading-small text-muted mb-4">Preencha com as informações necessárias</h4>
                                             <div class="pl-lg-4">
                                                 <div class="form-group">
@@ -213,6 +229,7 @@
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-default" style="padding-left: 20px; left: 350px;">Enviar</button>
+                                                </span>
                                         </form>
                                     </div>
                                 </div>
@@ -221,6 +238,8 @@
 
                     </div>
                 </div>
+
+
 
                 <!-- Argon Scripts -->
                 <!-- Core -->
@@ -232,5 +251,8 @@
                 <!-- Argon JS -->
                 <script src="http://tcc.test/assets/js/argon.js?v=1.2.0"></script>
 </body>
+
+
+
 
 </html>
