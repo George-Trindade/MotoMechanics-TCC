@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('date');
             $table->string('horario');
             $table->foreign('veiculo_id')->references('id')->on('veiculo');
+            $table->string('status');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

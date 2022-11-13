@@ -12,8 +12,10 @@ class AgendamentosController extends Controller
 {
     public function index()
     {
-        $agendamentos = Agendamento::all();
-        return view('Agendamentos.index',compact('agendamentos'));
+
+        $agendamentos = Agendamento::where(['user_id' => Auth::user()->id])->get();
+        $veiculos = Veiculo::where(['user_id' => Auth::user()->id])->get();
+        return view('Agendamentos.index',compact('agendamentos','veiculos'));
     }
     public function create()
     {
@@ -28,11 +30,33 @@ class AgendamentosController extends Controller
 
         $agendamentos = new Agendamento;
         $agendamentos->veiculo_id = $request->veiculo_id;
+        $agendamentos->user_id=Auth::user()->id;
         $agendamentos->servico = $request->servico;
         $agendamentos->date = $request->date;
         $agendamentos->horario = $request->horario;
+        $agendamentos->status = "solicitado";
         $agendamentos->save();
 
         return Redirect::route('agendamentos.index')->with('Criado com sucesso!');
     }
+    public function edit(Request $request, $id)
+    {
+        $agendamentos=Agendamento::find($id);
+        $veiculos = Veiculo::where(['user_id' => Auth::user()->id])->get();
+        return view('Agendamentos.update',compact('agendamentos','veiculos'));
+    }
+    public function update(Request $request, $id)
+    {
+        $agendamentos=Agendamento::find($id);
+        $agendamentos->update($request->all());
+        return Redirect::route('agendamentos.index')->with('Alterado com sucesso!');
+    }
+
+    public function destroy($id)
+    {
+        $agendamentos=Agendamento::find($id);
+        $agendamentos->delete();
+        return Redirect::route('agendamentos.index')->with('Deletado com sucesso!');
+    }
+
 }

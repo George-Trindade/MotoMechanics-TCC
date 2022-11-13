@@ -17,45 +17,14 @@
     <!-- Page plugins -->
     <!-- Argon CSS -->
     <link rel="stylesheet" href="http://tcc.test/assets/css/argon.css?v=1.2.0" type="text/css">
-    <link rel="stylesheet" href="http://tcc.test/assets/css/loading.css" type="text/css">
+    <link rel="stylesheet" href="http://tcc.test/assets/css/abas.css" type="text/css">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
-    <script src="http://tcc.test/assets/js/confirm.js" type="text/javascript"></script>
 
-    <script type="text/javascript">
-        function capturar() {
-            var capturando = "";
-            capturando = document.getElementById('data').value;
-            //capturando = data.split("-").reverse().join("-");
-            //document.getElementById('datadigitada').innerHTML = capturando;
-
-            $.getJSON('/agendamentos/novo/horarios/' + capturando,
-            $('#conteudo').css({display:'none'})+
-            $('#div-carregamento').css({display:'flex'})+
-            $('#carregamento').css({display:'block'}),
-                function(data) {
-                    $('#select-horarios').find('option').remove()+
-                    $('#div-carregamento').css({display:'none'})+
-                    $('#carregamento').css({display:'none'})+
-                    $('#conteudo').css({display:'block'});
-                    $.each(data,
-                        function(indice, valor) {
-                            $('<option>').val(valor.hora).text(valor.hora).appendTo('#select-horarios');
-                        },
-                    );
-                }
-            );
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        }
-    </script>
 </head>
 
 <body>
-
     <!-- Sidenav -->
     <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
         <div class="scrollbar-inner">
@@ -170,88 +139,68 @@
             <div class="container-fluid d-flex align-items-center">
                 <div class="row">
                     <div class="col-lg-7 col-md-10">
-                        <h1 class="display-2 text-white">Agendamento</h1>
-                        <p class="text-white" style="vertical-align: inherit; width:407px"">
-              Faça um agendamento para o serviço a ser realizado:
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Page content -->
-
-    <div class=" container-fluid mt--9" id="pag">
-
-                        <div class="row" >
-
-                            <div class="col-xl-11 order-xl-1" >
-
-                                <div class="card">
-
-                                    <div class="card-body" >
-
-                                        <form action="{{route('agendamentos.store')}}" method="post" id="Form">
-                                        <span><div class="body-loader" id="div-carregamento"><span class="loader" id="carregamento"></span></div></span>
-                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                            <span id="conteudo">
-                                            <h4 class="heading-small text-muted mb-4">Preencha com as informações necessárias</h4>
-                                            <div class="pl-lg-4">
-                                                <div class="form-group">
-                                                    <label class="form-control-label" for="input-username">Veículo</label>
-                                                    <select class="form-control" name="veiculo_id" id="veiculo_id">
-                                                        @foreach($veiculos as $veiculo)
-                                                        <option value="{{$veiculo->id}}">{{$veiculo->Modelo}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="example-date-input" class="form-control-label">Data</label>
-                                                    <input class="form-control" type="date" name="date" id="data" onChange="capturar()">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlSelect1" class="form-control-label">Horário</label>
-                                                    <select class="form-control" name="horario" id="select-horarios">
-                                                        <option>Selecione um horário</option>
-                                                    </select>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="exampleFormControlSelect1" class="form-control-label">Serviço</label>
-                                                            <select class="form-control" id="servico" name="servico" value="{{old('Servico')}}">
-                                                                <option>Troca de óleo</option>
-                                                                <option>Troca de relação</option>
-                                                                <option>Troca de pneu</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <button type="submit" class="btn btn-default" style="padding-left: 20px; left: 350px;" onclick = "ConfirmDelete()">Enviar</button>
-                                                </span>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        <h1 class="display-2 text-white">Agendamentos</h1>
                     </div>
                 </div>
+            </div>
+        </div>
+        <!-- Page content -->
+
+        <div class=" container-fluid mt--9" id="pag">
+            <div class="row">
+                <div class="col-xl-11 order-xl-1">
+                    <div class="card">
+                        <div class="card-abas">
+                            <nav class="nav_tabs">
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="tab1" class="rd_tab" name="tabs" checked>
+                                        <label for="tab1" class="tab_label">Abertos</label>
+                                        <div class="tab-content">
+                                            <article>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum, felis sed feugiat tristique, massa nisl pretium ligula, vel finibus risus lacus at mauris. Proin vel mollis augue. Sed non auctor ipsum, congue facilisis diam. Proin sed enim odio. Ut libero mi, luctus sit amet tincidunt a, ullamcorper sit amet ex. Duis faucibus condimentum lectus, id accumsan diam posuere eu. Cras eu blandit dui, vitae lacinia velit. Aliquam gravida massa a velit pulvinar, ut placerat sem tristique. Vivamus dictum, quam nec pharetra iaculis, risus velit dapibus nunc, quis lobortis sapien ligula mollis nunc. Praesent elementum rutrum tincidunt. Phasellus at lacinia lectus.
+                                            </article>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="tabs" class="rd_tab" id="tab2">
+                                        <label for="tab2" class="tab_label">Agendados</label>
+                                        <div class="tab-content">
+                                            <article>
+                                                Sed sit amet mauris vitae lorem pretium congue. Donec pulvinar auctor est, a porta ipsum vulputate ac. Ut sit amet sollicitudin ante. Sed gravida nulla et nibh consequat sagittis. Donec eu justo eu tortor elementum scelerisque. Mauris mollis volutpat tellus, id volutpat massa ultricies vel. Donec mollis arcu leo, ac ullamcorper eros viverra ut. Aliquam cursus justo nec purus condimentum, eu dignissim nunc mattis. Sed fermentum sollicitudin felis mattis malesuada. Quisque tempor tellus a odio euismod, non suscipit justo laoreet. Curabitur vel urna lorem. Pellentesque semper justo leo, in tristique ex porta at. Sed justo massa, lobortis quis hendrerit ac, eleifend vitae tellus.
+                                            </article>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="tabs" class="rd_tab" id="tab3">
+                                        <label for="tab3" class="tab_label">Concluídos</label>
+                                        <div class="tab-content">
+                                            <article>
+                                                Integer at ligula eget turpis elementum ultrices eget quis tortor. Duis posuere lorem justo, ut malesuada tortor tempus a. Curabitur pellentesque ultricies consectetur. Maecenas diam lorem, hendrerit eget sem ut, tincidunt vulputate ipsum. In vel enim et erat sagittis eleifend vel eu nunc. In hac habitasse platea dictumst. Integer tincidunt, augue at posuere eleifend, lacus quam hendrerit risus, aliquam sollicitudin ligula tellus quis elit. Proin varius fringilla vehicula. Phasellus mollis sollicitudin orci, id fringilla magna volutpat non. Nullam sed luctus nisl.
+                                            </article>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
-                <!-- Argon Scripts -->
-                <!-- Core -->
-                <script src="http://tcc.test/assets/vendor/jquery/dist/jquery.min.js"></script>
-                <script src="http://tcc.test/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-                <script src="http://tcc.test/assets/vendor/js-cookie/js.cookie.js"></script>
-                <script src="http://tcc.test/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-                <script src="http://tcc.test/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-                <!-- Argon JS -->
-                <script src="http://tcc.test/assets/js/argon.js?v=1.2.0"></script>
+    <!-- Argon Scripts -->
+    <!-- Core -->
+    <script src="http://tcc.test/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="http://tcc.test/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="http://tcc.test/assets/vendor/js-cookie/js.cookie.js"></script>
+    <script src="http://tcc.test/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="http://tcc.test/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+    <!-- Argon JS -->
+    <script src="http://tcc.test/assets/js/argon.js?v=1.2.0"></script>
 </body>
-
-
-
 
 </html>

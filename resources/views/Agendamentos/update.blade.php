@@ -19,8 +19,9 @@
     <link rel="stylesheet" href="http://tcc.test/assets/css/argon.css?v=1.2.0" type="text/css">
     <link rel="stylesheet" href="http://tcc.test/assets/css/loading.css" type="text/css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
     <script src="http://tcc.test/assets/js/confirm.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+
 
     <script type="text/javascript">
         function capturar() {
@@ -50,6 +51,13 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+        }
+        var clicado=false;
+        function selectCapturar(){
+            if(!clicado){
+            capturar();
+            clicado=true;
+            }
         }
     </script>
 </head>
@@ -190,7 +198,8 @@
 
                                     <div class="card-body" >
 
-                                        <form action="{{route('agendamentos.store')}}" method="post" id="Form">
+                                        <form action="{{route('agendamentos.update',$agendamentos->id)}}" method="post" id="Form" >
+                                        @method("put")
                                         <span><div class="body-loader" id="div-carregamento"><span class="loader" id="carregamento"></span></div></span>
                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                                             <span id="conteudo">
@@ -198,7 +207,7 @@
                                             <div class="pl-lg-4">
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="input-username">Veículo</label>
-                                                    <select class="form-control" name="veiculo_id" id="veiculo_id">
+                                                    <select class="form-control" name="veiculo_id" id="veiculo_id" value="{{old('veiculo_id')}}">
                                                         @foreach($veiculos as $veiculo)
                                                         <option value="{{$veiculo->id}}">{{$veiculo->Modelo}}</option>
                                                         @endforeach
@@ -207,19 +216,19 @@
 
                                                 <div class="form-group">
                                                     <label for="example-date-input" class="form-control-label">Data</label>
-                                                    <input class="form-control" type="date" name="date" id="data" onChange="capturar()">
+                                                    <input class="form-control" type="date" name="date" id="data" onChange="capturar()" value="{{$agendamentos->date}}">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleFormControlSelect1" class="form-control-label">Horário</label>
-                                                    <select class="form-control" name="horario" id="select-horarios">
-                                                        <option>Selecione um horário</option>
+                                                    <label for="exampleFormControlSelect1" class="form-control-label" >Horário</label>
+                                                    <select class="form-control" name="horario" id="select-horarios" value="{{$agendamentos->horario}}" onFocus="selectCapturar()">
+                                                        <option>{{$agendamentos->horario}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="exampleFormControlSelect1" class="form-control-label">Serviço</label>
-                                                            <select class="form-control" id="servico" name="servico" value="{{old('Servico')}}">
+                                                            <select class="form-control" id="servico" name="servico" value="{{$agendamentos->servico}}">
                                                                 <option>Troca de óleo</option>
                                                                 <option>Troca de relação</option>
                                                                 <option>Troca de pneu</option>
@@ -227,7 +236,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-default" style="padding-left: 20px; left: 350px;" onclick = "ConfirmDelete()">Enviar</button>
+                                                <button type="submit" class="btn btn-default" style="padding-left: 20px; left: 350px;">Enviar</button>
                                                 </span>
                                         </form>
                                     </div>
@@ -250,8 +259,5 @@
                 <!-- Argon JS -->
                 <script src="http://tcc.test/assets/js/argon.js?v=1.2.0"></script>
 </body>
-
-
-
 
 </html>

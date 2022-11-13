@@ -881,6 +881,7 @@ pre code
     margin-left: -15px;
 
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .no-gutters

@@ -31,5 +31,8 @@ require __DIR__.'/auth.php';
 Route::get('/agendamentos/', [AgendamentosController::class, 'index'])->name('agendamentos.index');
 Route::get('/agendamentos/novo', [AgendamentosController::class, 'create'])->name('agendamentos.create');
 Route::post('/agendamentos/novo', [AgendamentosController::class, 'store'])->name('agendamentos.store');
+Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos.destroy');
+Route::get('/agendamentos/alterar/{id}', [AgendamentosController::class, 'edit'])->name('agendamentos.edit');
+Route::put('/agendamentos/alterar/{id}', [AgendamentosController::class, 'update'])->name('agendamentos.update');
 Route::get('/agendamentos/novo/horarios/{datadigitada}', [HorariosController::class, 'horario'])->name('agendamentos.horario');
 

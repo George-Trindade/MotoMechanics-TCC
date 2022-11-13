@@ -20,7 +20,7 @@ class HorariosController extends Controller
         if($ContAgendamentos>0){
             foreach ($agendamentos as $agendamento){
                 foreach ($horarios as $key => $horario){
-                    if($agendamento->horario == $horario->hora){
+                    if($agendamento->status=="agendado" && $agendamento->horario == $horario->hora){
                         unset($horariosDisponiveis[$key]);
                     }
                 }
