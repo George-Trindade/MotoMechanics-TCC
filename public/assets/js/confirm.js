@@ -1,4 +1,4 @@
-function ConfirmDelete(){
+function ConfirmAction(){
     var x=confirm("Tem certeza?");
         $("#Form").submit(function (event) {
             if (x) {
@@ -11,3 +11,5 @@ function ConfirmDelete(){
 
         });
     }
+
+

@@ -217,7 +217,7 @@
                                                                 <form action="{{route('agendamentos.destroy',$agendamento->id)}}" method="post" id='Form'>
                                                                     @csrf
                                                                     <input type="hidden" name="_method" value="DELETE">
-                                                                    <button class="btn btn-icon btn-primary" onclick = "ConfirmDelete()" type="submit" >
+                                                                    <button class="btn btn-icon btn-primary" onclick = "ConfirmAction()" type="submit" >
                                                                         <span class="btn-inner--icon">Cancelar <i class="fa fa-ban" aria-hidden="true"></i></span>
                                                                     </button>
                                                                 </form>
@@ -278,10 +278,10 @@
                                                                 @endforeach
                                                             </td>
                                                             <td>
-                                                                <form action="" method="post">
+                                                                <form action="{{route('agendamentos.destroy',$agendamento->id)}}" method="post">
                                                                     @csrf
                                                                     <input type="hidden" name="_method" value="DELETE">
-                                                                    <button class="btn btn-icon btn-primary" type="submit" onclick = "ConfirmDelete()">
+                                                                    <button class="btn btn-icon btn-primary" type="submit" onclick = "ConfirmAction()">
                                                                         <span class="btn-inner--icon">Cancelar <i class="fa fa-ban" aria-hidden="true"></i></span>
                                                                     </button>
                                                                 </form>

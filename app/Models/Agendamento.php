@@ -15,6 +15,7 @@ class Agendamento extends Model
         'servico',
         'date',
         'horario',
+        'status',
         'deleted_at',
     ];
     public function veiculo(){

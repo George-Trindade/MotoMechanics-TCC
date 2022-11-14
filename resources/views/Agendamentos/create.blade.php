@@ -227,7 +227,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-default" style="padding-left: 20px; left: 350px;" onclick = "ConfirmDelete()">Enviar</button>
+                                                <button type="submit" class="btn btn-default" style="padding-left: 20px; left: 350px;" onclick = "ConfirmAction()">Enviar</button>
                                                 </span>
                                         </form>
                                     </div>
