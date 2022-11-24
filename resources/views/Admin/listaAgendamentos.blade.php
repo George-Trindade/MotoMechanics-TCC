@@ -13,7 +13,22 @@
 <script src="http://tcc.test/assets/js/confirm.js" type="text/javascript"></script>
 <script src="http://tcc.test/assets/js/confirmDelete.js" type="text/javascript"></script>
 <script src="http://tcc.test/assets/js/concluiAgendamento.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 </head>
+
+<script>
+    $(document).ready(function() {
+        $('#table-solicitado').DataTable();
+        $('#table-agendado').DataTable();
+        $('#table-concluido').DataTable();
+
+    });
+</script>
+
+
+
 <!-- Tabela de Agendamentos -->
 <section class="content">
     <!-- Solicitações -->
@@ -27,7 +42,8 @@
             </div>
         </div>
         <div class="card-body p-0"><!-- Collapsed fechado: style="display: none;"-->
-            <table class="table table-striped projects">
+            <div class="card-body">
+            <table class="display table table-striped projects" id="table-solicitado">
                 <thead>
                     <tr>
                         <th style="width: 1%">
@@ -47,7 +63,7 @@
                         </th>
                         <th style="width: 20%">
                         </th>
-
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -114,6 +130,7 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
 
     </div>
@@ -127,8 +144,9 @@
                 </button>
             </div>
         </div>
-        <div class="card-body p-0"><!-- Collapsed fechado: style="display: none;"-->
-            <table class="table table-striped projects">
+        <div class="card-body">
+            <div class="card-body p-0"><!-- Collapsed fechado: style="display: none;"-->
+            <table class="display table table-striped projects" id="table-agendado">
                 <thead>
                     <tr>
                         <th style="width: 1%">
@@ -148,6 +166,7 @@
                         </th>
                         <th style="width: 20%">
                         </th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -214,8 +233,8 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
-
     </div>
     <!-- Concluídos-->
     <div class="card"><!-- Collapsed fechado:class="collapsed-card"-->
@@ -227,8 +246,9 @@
                 </button>
             </div>
         </div>
-        <div class="card-body p-0"><!-- Collapsed fechado: style="display: none;"-->
-            <table class="table table-striped projects">
+        <div class="card-body">
+            <div class="card-body p-0"><!-- Collapsed fechado: style="display: none;"-->
+            <table class=" display table table-striped projects" id="table-concluido">
                 <thead>
                     <tr>
                         <th style="width: 1%">
@@ -248,7 +268,7 @@
                         </th>
                         <th style="width: 20%">
                         </th>
-
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -299,8 +319,8 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
-
     </div>
 
 </section>
@@ -308,10 +328,10 @@
 
 @section('css')
 <link rel="stylesheet" href="/css/admin_custom.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 @stop
 
 @section('js')
-<script>
-    console.log('Hi!');
-</script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 @stop
