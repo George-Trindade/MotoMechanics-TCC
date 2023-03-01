@@ -26,6 +26,7 @@ Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])-
 Route::get('/agendamentos/alterar/{id}', [AgendamentosController::class, 'edit'])->name('agendamentos.edit')->middleware('auth');
 Route::put('/agendamentos/alterar/{id}', [AgendamentosController::class, 'update'])->name('agendamentos.update')->middleware('auth');
 Route::get('/agendamentos/novo/horarios/{datadigitada}', [HorariosController::class, 'horario'])->name('agendamentos.horario')->middleware('auth');
+Route::get('/agendamentos/novo/horarios/{datadigitada}/{horario}', [HorariosController::class, 'verificaHorario'])->name('agendamentos.horarioDisponivel')->middleware('auth');
 
 //Admin
 Route::get('/admin/',[AdminController::class, 'index'])->name('admin.dashboard')->middleware('admin');

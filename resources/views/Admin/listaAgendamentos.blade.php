@@ -214,7 +214,7 @@
                             <form action="{{route('admin.concluiAgendamentos',$agendamento->id)}}" method="post" id='FormDone'>
                                 @method("put")
                                 @csrf
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="ConcluiAgendamento()">
+                                <button type="button" class="btn btn-danger btn-sm" onclick="ConcluiAgendamento()">
                                     <ion-icon name="checkbox-outline" style="font-size: 22px;"></ion-icon>
                                 </button>
                             </form>

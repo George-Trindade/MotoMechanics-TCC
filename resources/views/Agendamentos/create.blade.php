@@ -20,38 +20,9 @@
     <link rel="stylesheet" href="http://tcc.test/assets/css/loading.css" type="text/css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
-    <script src="http://tcc.test/assets/js/confirm.js" type="text/javascript"></script>
+    <script src="http://tcc.test/assets/js/ajaxHorario.js" type="text/javascript"></script>
 
-    <script type="text/javascript">
-        function capturar() {
-            var capturando = "";
-            capturando = document.getElementById('data').value;
-            //capturando = data.split("-").reverse().join("-");
-            //document.getElementById('datadigitada').innerHTML = capturando;
 
-            $.getJSON('/agendamentos/novo/horarios/' + capturando,
-            $('#conteudo').css({display:'none'})+
-            $('#div-carregamento').css({display:'flex'})+
-            $('#carregamento').css({display:'block'}),
-                function(data) {
-                    $('#select-horarios').find('option').remove()+
-                    $('#div-carregamento').css({display:'none'})+
-                    $('#carregamento').css({display:'none'})+
-                    $('#conteudo').css({display:'block'});
-                    $.each(data,
-                        function(indice, valor) {
-                            $('<option>').val(valor.hora).text(valor.hora).appendTo('#select-horarios');
-                        },
-                    );
-                }
-            );
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        }
-    </script>
 </head>
 
 <body>
@@ -190,7 +161,7 @@
 
                                     <div class="card-body" >
 
-                                        <form action="{{route('agendamentos.store')}}" method="post" id="Form">
+                                        <form action="{{route('agendamentos.store')}}" method="post" id="Form" onsubmit="return confirmAgendamento()">
                                         <span><div class="body-loader" id="div-carregamento"><span class="loader" id="carregamento"></span></div></span>
                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                                             <span id="conteudo">
@@ -211,7 +182,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleFormControlSelect1" class="form-control-label">Horário</label>
-                                                    <select class="form-control" name="horario" id="select-horarios">
+                                                    <select class="form-control" name="horario" id="select-horarios" onchange="ConfirmAction()">
                                                         <option>Selecione um horário</option>
                                                     </select>
                                                 </div>
@@ -227,7 +198,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-default" style="padding-left: 20px; left: 350px;" onclick = "ConfirmAction()">Enviar</button>
+                                                <button type="submit" class="btn btn-default" style="padding-left: 20px; left: 350px;" >Enviar</button>
                                                 </span>
                                         </form>
                                     </div>
