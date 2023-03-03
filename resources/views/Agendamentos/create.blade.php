@@ -153,53 +153,55 @@
 
     <div class=" container-fluid mt--9" id="pag">
 
-                        <div class="row" >
+                        <div class="row">
 
-                            <div class="col-xl-11 order-xl-1" >
+                            <div class="col-xl-11 order-xl-1">
 
                                 <div class="card">
 
-                                    <div class="card-body" >
+                                    <div class="card-body">
 
-                                        <form action="{{route('agendamentos.store')}}" method="post" id="Form" onsubmit="return confirmAgendamento()">
-                                        <span><div class="body-loader" id="div-carregamento"><span class="loader" id="carregamento"></span></div></span>
+                                        <form action="{{route('agendamentos.store')}}" method="post" id="Form">
+                                            <span>
+                                                <div class="body-loader" id="div-carregamento"><span class="loader" id="carregamento"></span></div>
+                                            </span>
                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                                             <span id="conteudo">
-                                            <h4 class="heading-small text-muted mb-4">Preencha com as informações necessárias</h4>
-                                            <div class="pl-lg-4">
-                                                <div class="form-group">
-                                                    <label class="form-control-label" for="input-username">Veículo</label>
-                                                    <select class="form-control" name="veiculo_id" id="veiculo_id">
-                                                        @foreach($veiculos as $veiculo)
-                                                        <option value="{{$veiculo->id}}">{{$veiculo->Modelo}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                                <h4 class="heading-small text-muted mb-4">Preencha com as informações necessárias</h4>
+                                                <div class="pl-lg-4">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="input-username">Veículo</label>
+                                                        <select class="form-control" name="veiculo_id" id="veiculo_id">
+                                                            @foreach($veiculos as $veiculo)
+                                                            <option value="{{$veiculo->id}}">{{$veiculo->Modelo}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
 
-                                                <div class="form-group">
-                                                    <label for="example-date-input" class="form-control-label">Data</label>
-                                                    <input class="form-control" type="date" name="date" id="data" onChange="capturar()">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlSelect1" class="form-control-label">Horário</label>
-                                                    <select class="form-control" name="horario" id="select-horarios" onchange="ConfirmAction()">
-                                                        <option>Selecione um horário</option>
-                                                    </select>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="exampleFormControlSelect1" class="form-control-label">Serviço</label>
-                                                            <select class="form-control" id="servico" name="servico" value="{{old('Servico')}}">
-                                                                <option>Troca de óleo</option>
-                                                                <option>Troca de relação</option>
-                                                                <option>Troca de pneu</option>
-                                                            </select>
+                                                    <div class="form-group">
+                                                        <label for="example-date-input" class="form-control-label">Data</label>
+                                                        <input class="form-control" type="date" name="date" id="data" required onChange="capturar()">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect1" class="form-control-label">Horário</label>
+                                                        <select class="form-control" name="horario" id="select-horarios" required onchange="ConfirmAction()">
+                                                            <option>Selecione um horário</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="exampleFormControlSelect1" class="form-control-label">Serviço</label>
+                                                                <select class="form-control" id="servico" name="servico" value="{{old('Servico')}}">
+                                                                    <option>Troca de óleo</option>
+                                                                    <option>Troca de relação</option>
+                                                                    <option>Troca de pneu</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <button type="submit" class="btn btn-default" style="padding-left: 20px; left: 350px;" >Enviar</button>
-                                                </span>
+                                                    <button type="button" class="btn btn-default" onclick="ConfirmSubmit()" style="padding-left: 20px; left: 350px;">Enviar</button>
+                                            </span>
                                         </form>
                                     </div>
                                 </div>
