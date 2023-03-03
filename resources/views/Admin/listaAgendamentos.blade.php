@@ -108,19 +108,19 @@
                                 <span class="badge bg-warning">{{$agendamento->status}}</span>
                             </td>
                             <td class="project-actions text-right">
-                                <form action="{{route('admin.confirmaAgendamentos',$agendamento->id)}}" method="post" id='Form'>
+                                <form action="{{route('admin.confirmaAgendamentos',$agendamento->id)}}" method="post" id="FormSolicitacao">
                                     @method("put")
                                     @csrf
-                                    <button type="submit" class="btn bg-lime btn-sm" onclick="ConfirmAction()">
+                                    <button type="button" class="btn bg-lime btn-sm" onclick="ConfirmaSolicitacao()">
                                         <ion-icon name="checkbox-outline" style="font-size: 22px;"></ion-icon>
                                     </button>
                                 </form>
                             </td>
                             <td>
-                                <form action="{{route('admin.destroyAgendamentos',$agendamento->id)}}" method="post" id='FormDelete'>
+                                <form action="{{route('admin.destroyAgendamentos',$agendamento->id)}}" method="post" id='FormDeleteSolicitacao'>
                                     @method("delete")
                                     @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="ConfirmDelete()">
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="ConfirmDeleteSolicitacao()">
                                         <ion-icon name="close-circle-outline" style="font-size: 22px;"></ion-icon>
                                     </button>
                                 </form>
@@ -211,7 +211,7 @@
                                 <span class="badge badge-success">{{$agendamento->status}}</span>
                             </td>
                             <td class="project-actions text-right">
-                                <form action="{{route('admin.concluiAgendamentos',$agendamento->id)}}" method="post" id='FormDone'>
+                                <form action="{{route('admin.concluiAgendamentos',$agendamento->id)}}" method="post" id='FormAgendado'>
                                     @method("put")
                                     @csrf
                                     <button type="button" class="btn bg-lime btn-sm" onclick="ConcluiAgendamento()">
@@ -220,10 +220,10 @@
                                 </form>
                             </td>
                             <td>
-                                <form action="{{route('admin.destroyAgendamentos',$agendamento->id)}}" method="post" id='FormDelete'>
+                                <form action="{{route('admin.destroyAgendamentos',$agendamento->id)}}" method="post" id='FormDeleteAgendado'>
                                     @method("delete")
                                     @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="ConfirmDelete()">
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="ConfirmDeleteAgendado()">
                                         <ion-icon name="close-circle-outline" style="font-size: 22px;"></ion-icon>
                                     </button>
                                 </form>
