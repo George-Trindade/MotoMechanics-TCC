@@ -16,124 +16,54 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script type="text/javascript" src="http://tcc.test/assets/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="http://tcc.test/assets/css/loading.css" type="text/css">
 </head>
 
 <script>
     $(document).ready(function() {
-        $('#table-solicitado').DataTable();
+        $("#geral").css({
+            display: "none"
+        });
+        $("#div-loader").css({
+            display: "flex"
+        });
+        $("#loader").css({
+            display: "block"
+        });
+        $.ajax("/admin/agendamentos/get/ajaxsolicitados", {
+            dataType: "json",
+            success: function(data) {
+                $("#tabela-nova").html(data["html"]);
+                $("#table-solicitado").DataTable({});
+                $("#div-loader").css({
+                    display: "none"
+                });
+                $("#loader").css({
+                    display: "none"
+                });
+                $("#geral").css({
+                    display: "block"
+                });
+            },
+        });
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
         $('#table-agendado').DataTable();
         $('#table-concluido').DataTable();
 
     });
 </script>
-
-
-
+<!-- Animação loading -->
+<span>
+    <div class="body-loader" id="div-loader"><span class="loader" id="loader"></span></div>
+</span>
 <!-- Tabela de Agendamentos -->
-<section class="content">
+<section id=geral class="content">
+    <div id="tabela-nova"></div>
     <!-- Solicitações -->
-    <div class="card"><!-- Collapsed fechado:class="collapsed-card"-->
-        <div class="card-header">
-            <h3 class="card-title">Solicitações</h3>
-            <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                    <i class="fas fa-minus"></i>
-                </button>
-            </div>
-        </div>
-        <div class="card-body p-0"><!-- Collapsed fechado: style="display: none;"-->
-            <div class="card-body">
-                <table class="display table table-striped projects" id="table-solicitado">
-                    <thead>
-                        <tr>
-                            <th style="width: 1%">
-                                ID
-                            </th>
-                            <th style="width: 20%">
-                                Cliente
-                            </th>
-                            <th>
-                                Serviço
-                            </th>
-                            <th>
-                                Data
-                            </th>
-                            <th style="width: 8%" class="text-center">
-                                Status
-                            </th>
-                            <th style="width: 20%">
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($agendamentos as $agendamento)
-                        @if($agendamento->status == 'solicitado')
-                        <tr>
-                            <td>
-                                {{$agendamento->id}}
-                            </td>
-                            <td>
-                                <a>
-                                    @foreach($users as $user)
-                                    @if($agendamento->user_id == $user->id)
-                                    {{$user->name}}
-                                    @endif
-                                    @endforeach
-                                </a>
-                                <br>
-                                <small>
-                                    @foreach($veiculos as $veiculo)
-                                    @if($agendamento->veiculo_id == $veiculo->id)
-                                    {{$veiculo->Modelo}}
-                                    @endif
-                                    @endforeach
-                                </small>
-                            </td>
-                            <td>
-                                {{$agendamento->servico}}
-                            </td>
-                            <td>
-                                <div>
-                                    {{$agendamento->horario}}
-                                </div>
-                                <div>
-                                    @php
-                                    $data=$agendamento->date;
-                                    echo implode("/",array_reverse(explode("-",$data)));
-                                    @endphp
-                                </div>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge bg-warning">{{$agendamento->status}}</span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <form action="{{route('admin.confirmaAgendamentos',$agendamento->id)}}" method="post" id="FormSolicitacao">
-                                    @method("put")
-                                    @csrf
-                                    <button type="button" class="btn bg-lime btn-sm" onclick="ConfirmaSolicitacao()">
-                                        <ion-icon name="checkbox-outline" style="font-size: 22px;"></ion-icon>
-                                    </button>
-                                </form>
-                            </td>
-                            <td>
-                                <form action="{{route('admin.destroyAgendamentos',$agendamento->id)}}" method="post" id='FormDeleteSolicitacao'>
-                                    @method("delete")
-                                    @csrf
-                                    <button type="button" class="btn btn-danger btn-sm" onclick="ConfirmDeleteSolicitacao()">
-                                        <ion-icon name="close-circle-outline" style="font-size: 22px;"></ion-icon>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endif
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-    </div>
     <!-- Agendados -->
     <div class="card card"> <!-- Collapsed fechado:class="collapsed-card"-->
         <div class="card-header">
