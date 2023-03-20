@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('servico');
             $table->string('date');
             $table->string('horario');
-            $table->foreign('veiculo_id')->references('id')->on('veiculo');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('veiculo_id')->constrained();
             $table->string('status');
             $table->softDeletes();
             $table->timestamps();
