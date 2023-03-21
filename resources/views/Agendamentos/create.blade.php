@@ -222,6 +222,11 @@
                 <script src="http://motomechanics.online/public/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
                 <!-- Argon JS -->
                 <script src="http://motomechanics.online/public/assets/js/argon.js?v=1.2.0"></script>
+                <script>
+                    $(document).ready(function() {
+                        document.getElementById('data').value = '';
+                    });
+                </script>
 </body>
 
 

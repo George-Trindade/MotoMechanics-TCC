@@ -32,7 +32,7 @@ function capturar() {
     });
 }
 
- function ConfirmSubmit() {
+function ConfirmSubmit() {
     var capturando = "";
     var select = document.getElementById("select-horarios");
     var horario = select.options[select.selectedIndex].value;
@@ -54,46 +54,11 @@ function capturar() {
                     $("#carregamento").css({ display: "block" }),
 
                 function (data) {
-                    respJson = data["success"];
+                    respJson = "saida:" + data["success"];
                     console.log(respJson);
-                    if (respJson == true) {
+                    if (respJson != "saida:false") {
                         alert("Selecione um horário válido!");
-                        $.getJSON(
-                            "/agendamentos/novo/horarios/" + capturando,
-                            $("#conteudo").css({ display: "none" }) +
-                                $("#div-carregamento").css({
-                                    display: "flex",
-                                }) +
-                                $("#carregamento").css({ display: "block" }),
-                            function (data) {
-                                $("#select-horarios").find("option").remove() +
-                                    $("#div-carregamento").css({
-                                        display: "none",
-                                    }) +
-                                    $("#carregamento").css({
-                                        display: "none",
-                                    }) +
-                                    $("#conteudo").css({ display: "block" });
-                                $("<option>")
-                                    .val(null)
-                                    .text("Selecione um horário")
-                                    .appendTo("#select-horarios");
-                                $.each(data, function (indice, valor) {
-                                    $("<option>")
-                                        .val(valor.hora)
-                                        .text(valor.hora)
-                                        .appendTo("#select-horarios");
-                                });
-                            }
-                        );
-
-                        $.ajaxSetup({
-                            headers: {
-                                "X-CSRF-TOKEN": $(
-                                    'meta[name="csrf-token"]'
-                                ).attr("content"),
-                            },
-                        });
+                        capturar();
                         return true;
                     } else {
                         document.getElementById("Form").submit();
@@ -119,7 +84,6 @@ function ConfirmAction() {
     var respJson;
     capturando = document.getElementById("data").value;
 
-    
     $.getJSON(
         "/agendamentos/novo/horarios/" + capturando + "/" + horario,
         $("#conteudo").css({ display: "none" }) +
@@ -127,7 +91,7 @@ function ConfirmAction() {
             $("#carregamento").css({ display: "block" }),
 
         function (data) {
-            respJson = "saida:"+data['success'];
+            respJson = "saida:" + data["success"];
             console.log(respJson);
             if (respJson != "saida:false") {
                 alert("Selecione um horário válido!");

@@ -21,7 +21,56 @@ class HorariosController extends Controller
         $horarios = DB::table('horarios')->get();
         $horariosDisponiveis = $horarios;
         $cont = 0;
-        if ($ContAgendamentos > 0) {
+        $user = Auth::id();
+
+        $agendamentoUser = DB::table('agendamentos')->where('status', 'LIKE', 'solicitado')->where('user_id', 'LIKE', $user)->get();
+        if (($agendamentoUser->count()) > 0)
+            foreach ($agendamentoUser as $user) {
+                foreach ($horarios as $key => $horario) {
+                    if ($user->date == $datadigitada && $user->horario == $horario->hora) {
+                        unset($horariosDisponiveis[$key]);
+                    }
+                }
+            }
+        foreach ($agendamentos as $agendamento) {
+            foreach ($horarios as $key => $horario) {
+                if ($agendamento->status == "agendado" && $agendamento->horario == $horario->hora) {
+                    unset($horariosDisponiveis[$key]);
+                }
+            }
+        }
+        foreach ($agendamentos as $agendamento) {
+            foreach ($horariosDisponiveis as $key => $horario) {
+                if ($agendamento->status == "solicitado" && $agendamento->horario == $horario->hora) {
+                    $cont++;
+                    if ($cont > 3) {
+                        unset($horariosDisponiveis[$key]);
+                    }
+                }
+            }
+        }
+
+        return response()->json($horariosDisponiveis);
+    }
+    public function verificaHorario(Request $request, $datadigitada, $horario)
+    {
+        $status = "agendado";
+        $user = Auth::id();
+        $agendamentoUser = DB::table('agendamentos')->where('date', 'LIKE', $datadigitada)->where('horario', 'LIKE', $horario)->where('status', 'LIKE', 'solicitado')->where('user_id', 'LIKE', $user)->get();
+        $ContAgendamentosUser = $agendamentoUser->count();
+        $agendamentos = DB::table('agendamentos')->where('date', 'LIKE', $datadigitada)->where('horario', 'LIKE', $horario)->where('status', 'LIKE', $status)->get();
+        $ContAgendamentos = $agendamentos->count();
+        $horarios = DB::table('horarios')->get();
+        $horariosDisponiveis = $horarios;
+        $cont = 0;
+        if ($ContAgendamentosUser > 0) {
+            foreach ($agendamentoUser as $agendamento) {
+                foreach ($horarios as $key => $horario) {
+                    if ($agendamento->horario == $horario->hora) {
+                        unset($horariosDisponiveis[$key]);
+                    }
+                }
+            }
             foreach ($agendamentos as $agendamento) {
                 foreach ($horarios as $key => $horario) {
                     if ($agendamento->status == "agendado" && $agendamento->horario == $horario->hora) {
@@ -39,42 +88,39 @@ class HorariosController extends Controller
                     }
                 }
             }
-
             return response()->json($horariosDisponiveis);
-        } else {
-            return response()->json($horarios);
-        }
-    }
-    public function verificaHorario(Request $request, $datadigitada, $horario)
-    {
-        $status = "agendado";
-        $user = Auth::id();
-        $agendamentoUser = DB::table('agendamentos')->where('date', 'LIKE', $datadigitada)->where('horario', 'LIKE', $horario)->where('status', 'LIKE', 'solicitado')->where('user_id', 'LIKE', $user)->get();
-        $ContAgendamentosUser = $agendamentoUser->count();
-        $agendamentos = DB::table('agendamentos')->where('date', 'LIKE', $datadigitada)->where('horario', 'LIKE', $horario)->where('status', 'LIKE', $status)->get();
-        $ContAgendamentos = $agendamentos->count();
-        $horarios = DB::table('horarios')->get();
-        $horariosDisponiveis = $horarios;
-
-        
-
-        if ($ContAgendamentosUser > 0) {
-                foreach ($agendamentoUser as $agendamento) {
+        } else if ($ContAgendamentos > 0) {
+            $contTest = 0;
+            foreach ($agendamentos as $agendamento) {
+                foreach ($horarios as $key => $horario) {
+                    if ($agendamento->status == "agendado" && $agendamento->horario == $horario->hora) {
+                        $contTest++;
+                    }
+                }
+            }
+            if ($contTest > 0) {
+                foreach ($agendamentos as $agendamento) {
                     foreach ($horarios as $key => $horario) {
-                        if ($agendamento->horario == $horario->hora) {
+                        if ($agendamento->status == "agendado" && $agendamento->horario == $horario->hora) {
                             unset($horariosDisponiveis[$key]);
                         }
                     }
                 }
-                $ContAgendamentosUser = 0;
-                return response()->json($horariosDisponiveis);
-              
-            } else {
-                if ($ContAgendamentos > 0) {
-                    return response()->json(['success' => true]);
-                } else {
-                    return response()->json(['success' => false]);
+                if ($ContAgendamentosUser > 0) {
+                    foreach ($agendamentoUser as $agendamento) {
+                        foreach ($horarios as $key => $horario) {
+                            if ($agendamento->horario == $horario->hora) {
+                                unset($horariosDisponiveis[$key]);
+                            }
+                        }
+                    }
                 }
+                return response()->json($horariosDisponiveis);
+            } else {
+                return response()->json(['success' => false]);
+            }
+        } else {
+            return response()->json(['success' => false]);
         }
     }
 }
