@@ -21,7 +21,6 @@ class HorariosController extends Controller
         $horarios = DB::table('horarios')->get();
         $horariosDisponiveis = $horarios;
         $cont = 0;
-
         if ($ContAgendamentos > 0) {
             foreach ($agendamentos as $agendamento) {
                 foreach ($horarios as $key => $horario) {
@@ -50,18 +49,32 @@ class HorariosController extends Controller
     {
         $status = "agendado";
         $user = Auth::id();
-        $agendamentoUser = DB::table('agendamentos')->where('date', 'LIKE', $datadigitada)->where('horario', 'LIKE', $horario)->where('status', 'LIKE', 'solicitado')->where('user_id', 'LIKE', $user)->get()->count();
-        //dd($agendamentoUser);
+        $agendamentoUser = DB::table('agendamentos')->where('date', 'LIKE', $datadigitada)->where('horario', 'LIKE', $horario)->where('status', 'LIKE', 'solicitado')->where('user_id', 'LIKE', $user)->get();
+        $ContAgendamentosUser = $agendamentoUser->count();
         $agendamentos = DB::table('agendamentos')->where('date', 'LIKE', $datadigitada)->where('horario', 'LIKE', $horario)->where('status', 'LIKE', $status)->get();
         $ContAgendamentos = $agendamentos->count();
-        if ($agendamentoUser > 1) {
-            return response()->json(['success' => true]);
-        } else {
-            if ($ContAgendamentos > 0) {
-                return response()->json(['success' => true]);
+        $horarios = DB::table('horarios')->get();
+        $horariosDisponiveis = $horarios;
+
+        
+
+        if ($ContAgendamentosUser > 0) {
+                foreach ($agendamentoUser as $agendamento) {
+                    foreach ($horarios as $key => $horario) {
+                        if ($agendamento->horario == $horario->hora) {
+                            unset($horariosDisponiveis[$key]);
+                        }
+                    }
+                }
+                $ContAgendamentosUser = 0;
+                return response()->json($horariosDisponiveis);
+              
             } else {
-                return response()->json(['success' => false]);
-            }
+                if ($ContAgendamentos > 0) {
+                    return response()->json(['success' => true]);
+                } else {
+                    return response()->json(['success' => false]);
+                }
         }
     }
 }

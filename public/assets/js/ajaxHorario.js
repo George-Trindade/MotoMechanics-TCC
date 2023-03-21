@@ -32,7 +32,7 @@ function capturar() {
     });
 }
 
-function ConfirmSubmit() {
+ function ConfirmSubmit() {
     var capturando = "";
     var select = document.getElementById("select-horarios");
     var horario = select.options[select.selectedIndex].value;
@@ -119,6 +119,7 @@ function ConfirmAction() {
     var respJson;
     capturando = document.getElementById("data").value;
 
+    
     $.getJSON(
         "/agendamentos/novo/horarios/" + capturando + "/" + horario,
         $("#conteudo").css({ display: "none" }) +
@@ -126,13 +127,12 @@ function ConfirmAction() {
             $("#carregamento").css({ display: "block" }),
 
         function (data) {
-            respJson = data["success"];
+            respJson = "saida:"+data['success'];
             console.log(respJson);
-
-            if (respJson == true) {
+            if (respJson != "saida:false") {
                 alert("Selecione um horário válido!");
                 $.getJSON(
-                    "/agendamentos/novo/horarios/" + capturando,
+                    "/agendamentos/novo/horarios/" + capturando + "/" + horario,
                     $("#conteudo").css({ display: "none" }) +
                         $("#div-carregamento").css({ display: "flex" }) +
                         $("#carregamento").css({ display: "block" }),

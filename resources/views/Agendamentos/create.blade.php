@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="http://motomechanics.online/public/assets/css/loading.css" type="text/css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
-    <script src="http://motomechanics.online/public/assets/js/ajaxHorario.js" type="text/javascript"></script>
+    <script src="http://tcc.test/assets/js/ajaxHorario.js" type="text/javascript"></script>
 
 
 </head>
