@@ -214,10 +214,10 @@
                                                                         <span class="btn-inner--icon">Alterar <i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
                                                                     </button>
                                                                 </a>
-                                                                <form action="{{route('agendamentos.destroy',$agendamento->id)}}" method="post" id='Form'>
+                                                                <form action="{{route('agendamentos.destroy',$agendamento->id)}}" method="post" id='Form_index'>
                                                                     @csrf
                                                                     <input type="hidden" name="_method" value="DELETE">
-                                                                    <button class="btn btn-icon btn-primary" onclick="ConfirmAction()" type="submit">
+                                                                    <button class="btn btn-icon btn-primary" onclick="ConfirmCancelSolicitacao()" type="">
                                                                         <span class="btn-inner--icon">Cancelar <i class="fa fa-ban" aria-hidden="true"></i></span>
                                                                     </button>
                                                                 </form>
