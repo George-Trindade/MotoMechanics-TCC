@@ -8,18 +8,18 @@
     <meta name="author" content="Creative Tim">
     <title>Agendamento</title>
     <!-- Favicon -->
-    <link rel="icon" href="http://tcc.test/assets/img/motocicleta.png" type="image/png">
+    <link rel="icon" href="http://motomechanics.online/public/assets/img/motocicleta.png" type="image/png">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
-    <link rel="stylesheet" href="http://tcc.test/assets/vendor/nucleo/css/nucleo.css" type="text/css">
-    <link rel="stylesheet" href="http://tcc.test/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="http://motomechanics.online/public/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="http://motomechanics.online/public/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
     <!-- Page plugins -->
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="http://tcc.test/assets/css/argon.css?v=1.2.0" type="text/css">
-    <link rel="stylesheet" href="http://tcc.test/assets/css/loading.css" type="text/css">
+    <link rel="stylesheet" href="http://motomechanics.online/public/assets/css/argon.css?v=1.2.0" type="text/css">
+    <link rel="stylesheet" href="http://motomechanics.online/public/assets/css/loading.css" type="text/css">
 
-    <script src="http://tcc.test/assets/js/confirm.js" type="text/javascript"></script>
+    <script src="http://motomechanics.online/public/assets/js/confirm.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
 
 
@@ -31,14 +31,26 @@
             //document.getElementById('datadigitada').innerHTML = capturando;
 
             $.getJSON('/agendamentos/novo/horarios/' + capturando,
-            $('#conteudo').css({display:'none'})+
-            $('#div-carregamento').css({display:'flex'})+
-            $('#carregamento').css({display:'block'}),
+                $('#conteudo').css({
+                    display: 'none'
+                }) +
+                $('#div-carregamento').css({
+                    display: 'flex'
+                }) +
+                $('#carregamento').css({
+                    display: 'block'
+                }),
                 function(data) {
-                    $('#select-horarios').find('option').remove()+
-                    $('#div-carregamento').css({display:'none'})+
-                    $('#carregamento').css({display:'none'})+
-                    $('#conteudo').css({display:'block'});
+                    $('#select-horarios').find('option').remove() +
+                        $('#div-carregamento').css({
+                            display: 'none'
+                        }) +
+                        $('#carregamento').css({
+                            display: 'none'
+                        }) +
+                        $('#conteudo').css({
+                            display: 'block'
+                        });
                     $.each(data,
                         function(indice, valor) {
                             $('<option>').val(valor.hora).text(valor.hora).appendTo('#select-horarios');
@@ -52,11 +64,12 @@
                 }
             });
         }
-        var clicado=false;
-        function selectCapturar(){
-            if(!clicado){
-            capturar();
-            clicado=true;
+        var clicado = false;
+
+        function selectCapturar() {
+            if (!clicado) {
+                capturar();
+                clicado = true;
             }
         }
     </script>
@@ -70,7 +83,7 @@
             <!-- Brand -->
             <div class="sidenav-header  align-items-center">
                 <a class="navbar-brand" href="javascript:void(0)">
-                    <img src="http://tcc.test/assets/img/motocicleta.png" class="navbar-brand-img" alt="...">
+                    <img src="http://motomechanics.online/public/assets/img/motocicleta.png" class="navbar-brand-img" alt="...">
                     <p style="font-weight: bold;">MotoMechanics</p>
                 </a>
             </div>
@@ -131,7 +144,7 @@
                             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="media align-items-center">
                                     <span class="avatar avatar-sm rounded-circle">
-                                        <img alt="Image placeholder" src="http://tcc.test/assets/img/theme/team-4.jpg">
+                                        <img alt="Image placeholder" src="http://motomechanics.online/public/assets/img/theme/team-4.jpg">
                                     </span>
                                     <div class="media-body  ml-2  d-none d-lg-block">
                                         <span class="mb-0 text-sm  font-weight-bold">Hebe Camargo</span>
@@ -171,7 +184,7 @@
         </nav>
         <!-- Header -->
         <!-- Header -->
-        <div class="header pb-6 d-flex align-items-center" style="min-height: 370px; background-image: url(http://tcc.test/assets/img/back.jpg); background-size: cover; background-position: center top;">
+        <div class="header pb-6 d-flex align-items-center" style="min-height: 370px; background-image: url(http://motomechanics.online/public/assets/img/back.jpg); background-size: cover; background-position: center top;">
             <!-- Mask -->
             <span class="mask bg-gradient-default opacity-8"></span>
             <!-- Header container -->
@@ -190,54 +203,56 @@
 
     <div class=" container-fluid mt--9" id="pag">
 
-                        <div class="row" >
+                        <div class="row">
 
-                            <div class="col-xl-11 order-xl-1" >
+                            <div class="col-xl-11 order-xl-1">
 
                                 <div class="card">
 
-                                    <div class="card-body" >
+                                    <div class="card-body">
 
-                                        <form action="{{route('agendamentos.update',$agendamentos->id)}}" method="post" id="Form" >
-                                        @method("put")
-                                        <span><div class="body-loader" id="div-carregamento"><span class="loader" id="carregamento"></span></div></span>
+                                        <form action="{{route('agendamentos.update',$agendamentos->id)}}" method="post" id="Form">
+                                            @method("put")
+                                            <span>
+                                                <div class="body-loader" id="div-carregamento"><span class="loader" id="carregamento"></span></div>
+                                            </span>
                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                                             <span id="conteudo">
-                                            <h4 class="heading-small text-muted mb-4">Preencha com as informações necessárias</h4>
-                                            <div class="pl-lg-4">
-                                                <div class="form-group">
-                                                    <label class="form-control-label" for="input-username">Veículo</label>
-                                                    <select class="form-control" name="veiculo_id" id="veiculo_id" value="{{old('veiculo_id')}}">
-                                                        @foreach($veiculos as $veiculo)
-                                                        <option value="{{$veiculo->id}}">{{$veiculo->Modelo}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+                                                <h4 class="heading-small text-muted mb-4">Preencha com as informações necessárias</h4>
+                                                <div class="pl-lg-4">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label" for="input-username">Veículo</label>
+                                                        <select class="form-control" name="veiculo_id" id="veiculo_id" value="{{old('veiculo_id')}}">
+                                                            @foreach($veiculos as $veiculo)
+                                                            <option value="{{$veiculo->id}}">{{$veiculo->Modelo}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
 
-                                                <div class="form-group">
-                                                    <label for="example-date-input" class="form-control-label">Data</label>
-                                                    <input class="form-control" type="date" name="date" id="data" onChange="capturar()" value="{{$agendamentos->date}}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlSelect1" class="form-control-label" >Horário</label>
-                                                    <select class="form-control" name="horario" id="select-horarios" value="{{$agendamentos->horario}}" onFocus="selectCapturar()">
-                                                        <option>{{$agendamentos->horario}}</option>
-                                                    </select>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="exampleFormControlSelect1" class="form-control-label">Serviço</label>
-                                                            <select class="form-control" id="servico" name="servico" value="{{$agendamentos->servico}}">
-                                                                <option>Troca de óleo</option>
-                                                                <option>Troca de relação</option>
-                                                                <option>Troca de pneu</option>
-                                                            </select>
+                                                    <div class="form-group">
+                                                        <label for="example-date-input" class="form-control-label">Data</label>
+                                                        <input class="form-control" type="date" name="date" id="data" onChange="capturar()" value="{{$agendamentos->date}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect1" class="form-control-label">Horário</label>
+                                                        <select class="form-control" name="horario" id="select-horarios" value="{{$agendamentos->horario}}" onFocus="selectCapturar()">
+                                                            <option>{{$agendamentos->horario}}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="exampleFormControlSelect1" class="form-control-label">Serviço</label>
+                                                                <select class="form-control" id="servico" name="servico" value="{{$agendamentos->servico}}">
+                                                                    <option>Troca de óleo</option>
+                                                                    <option>Troca de relação</option>
+                                                                    <option>Troca de pneu</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <button type="submit" class="btn btn-default" style="padding-left: 20px; left: 350px;">Enviar</button>
-                                                </span>
+                                                    <button type="submit" class="btn btn-default" style="padding-left: 20px; left: 350px;">Enviar</button>
+                                            </span>
                                         </form>
                                     </div>
                                 </div>
@@ -251,13 +266,13 @@
 
                 <!-- Argon Scripts -->
                 <!-- Core -->
-                <script src="http://tcc.test/assets/vendor/jquery/dist/jquery.min.js"></script>
-                <script src="http://tcc.test/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-                <script src="http://tcc.test/assets/vendor/js-cookie/js.cookie.js"></script>
-                <script src="http://tcc.test/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-                <script src="http://tcc.test/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+                <script src="http://motomechanics.online/public/assets/vendor/jquery/dist/jquery.min.js"></script>
+                <script src="http://motomechanics.online/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="http://motomechanics.online/public/assets/vendor/js-cookie/js.cookie.js"></script>
+                <script src="http://motomechanics.online/public/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+                <script src="http://motomechanics.online/public/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
                 <!-- Argon JS -->
-                <script src="http://tcc.test/assets/js/argon.js?v=1.2.0"></script>
+                <script src="http://motomechanics.online/public/assets/js/argon.js?v=1.2.0"></script>
 </body>
 
 </html>

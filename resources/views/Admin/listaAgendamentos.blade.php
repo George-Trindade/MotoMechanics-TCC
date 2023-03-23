@@ -11,12 +11,12 @@
 <head>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="http://tcc.test/assets/js/confirmDelete.js" type="text/javascript"></script>
-    <script src="http://tcc.test/assets/js/concluiAgendamento.js" type="text/javascript"></script>
+    <script src="http://motomechanics.online/public/assets/js/confirmDelete.js" type="text/javascript"></script>
+    <script src="http://motomechanics.online/public/assets/js/concluiAgendamento.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script type="text/javascript" src="http://tcc.test/assets/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="http://motomechanics.online/public/assets/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
-    <link rel="stylesheet" href="http://tcc.test/assets/css/loading.css" type="text/css">
+    <link rel="stylesheet" href="http://motomechanics.online/public/assets/css/loading.css" type="text/css">
 </head>
 
 <script>

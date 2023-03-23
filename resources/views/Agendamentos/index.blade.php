@@ -8,18 +8,18 @@
     <meta name="author" content="Creative Tim">
     <title>Meus agendamentos</title>
     <!-- Favicon -->
-    <link rel="icon" href="http://tcc.test/assets/img/motocicleta.png" type="image/png">
+    <link rel="icon" href="http://motomechanics.online/public/assets/img/motocicleta.png" type="image/png">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
-    <link rel="stylesheet" href="http://tcc.test/assets/vendor/nucleo/css/nucleo.css" type="text/css">
-    <link rel="stylesheet" href="http://tcc.test/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
-    <link rel="stylesheet" href="http://tcc.test/assets/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://motomechanics.online/public/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="http://motomechanics.online/public/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="http://motomechanics.online/public/assets/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="http://tcc.test/assets/css/argon.css?v=1.2.0" type="text/css">
-    <link rel="stylesheet" href="http://tcc.test/assets/css/abas.css" type="text/css">
+    <link rel="stylesheet" href="http://motomechanics.online/public/assets/css/argon.css?v=1.2.0" type="text/css">
+    <link rel="stylesheet" href="http://motomechanics.online/public/assets/css/abas.css" type="text/css">
 
-    <script src="http://tcc.test/assets/js/confirm.js" type="text/javascript"></script>
+    <script src="http://motomechanics.online/public/assets/js/confirm.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
             <!-- Brand -->
             <div class="sidenav-header  align-items-center">
                 <a class="navbar-brand" href="javascript:void(0)">
-                    <img src="http://tcc.test/assets/img/motocicleta.png" class="navbar-brand-img" alt="...">
+                    <img src="http://motomechanics.online/public/assets/img/motocicleta.png" class="navbar-brand-img" alt="...">
                     <p style="font-weight: bold;">MotoMechanics</p>
                 </a>
             </div>
@@ -98,7 +98,7 @@
                             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="media align-items-center">
                                     <span class="avatar avatar-sm rounded-circle">
-                                        <img alt="Image placeholder" src="http://tcc.test/assets/img/theme/team-4.jpg">
+                                        <img alt="Image placeholder" src="http://motomechanics.online/public/assets/img/theme/team-4.jpg">
                                     </span>
                                     <div class="media-body  ml-2  d-none d-lg-block">
                                         <span class="mb-0 text-sm  font-weight-bold">{{Auth::user()->name }}</span>
@@ -217,7 +217,7 @@
                                                                 <form action="{{route('agendamentos.destroy',$agendamento->id)}}" method="post" id='Form'>
                                                                     @csrf
                                                                     <input type="hidden" name="_method" value="DELETE">
-                                                                    <button class="btn btn-icon btn-primary" onclick = "ConfirmAction()" type="submit" >
+                                                                    <button class="btn btn-icon btn-primary" onclick="ConfirmAction()" type="submit">
                                                                         <span class="btn-inner--icon">Cancelar <i class="fa fa-ban" aria-hidden="true"></i></span>
                                                                     </button>
                                                                 </form>
@@ -226,8 +226,8 @@
 
                                                             </td>
                                                         <tr>
-                                                        @endif
-                                                        @endforeach
+                                                            @endif
+                                                            @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -281,14 +281,14 @@
                                                                 <form action="{{route('agendamentos.destroy',$agendamento->id)}}" method="post">
                                                                     @csrf
                                                                     <input type="hidden" name="_method" value="DELETE">
-                                                                    <button class="btn btn-icon btn-primary" type="submit" onclick = "ConfirmAction()">
+                                                                    <button class="btn btn-icon btn-primary" type="submit" onclick="ConfirmAction()">
                                                                         <span class="btn-inner--icon">Cancelar <i class="fa fa-ban" aria-hidden="true"></i></span>
                                                                     </button>
                                                                 </form>
                                                             </td>
                                                         <tr>
-                                                        @endif
-                                                        @endforeach
+                                                            @endif
+                                                            @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -339,8 +339,8 @@
                                                                 @endforeach
                                                             </td>
                                                         <tr>
-                                                        @endif
-                                                        @endforeach
+                                                            @endif
+                                                            @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -361,13 +361,13 @@
     </div>
     <!-- Argon Scripts -->
     <!-- Core -->
-    <script src="http://tcc.test/assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="http://tcc.test/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="http://tcc.test/assets/vendor/js-cookie/js.cookie.js"></script>
-    <script src="http://tcc.test/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-    <script src="http://tcc.test/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+    <script src="http://motomechanics.online/public/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="http://motomechanics.online/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="http://motomechanics.online/public/assets/vendor/js-cookie/js.cookie.js"></script>
+    <script src="http://motomechanics.online/public/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="http://motomechanics.online/public/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
     <!-- Argon JS -->
-    <script src="http://tcc.test/assets/js/argon.js?v=1.2.0"></script>
+    <script src="http://motomechanics.online/public/assets/js/argon.js?v=1.2.0"></script>
 </body>
 
 </html>
