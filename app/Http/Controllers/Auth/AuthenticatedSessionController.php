@@ -31,10 +31,11 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-        if(Auth::check() && Auth::user()->admin==1){
+        if (Auth::check() && Auth::user()->admin == 1) {
             return view('Admin.dashboard');
-        }else{
-            return redirect()->intended(RouteServiceProvider::HOME);
+        } else {
+            // return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->route('agendamentos.index');
         }
     }
 

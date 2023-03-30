@@ -5,10 +5,10 @@ use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\HorariosController;
 use App\Http\Controllers\AdminController;
 
+// Route::get('/', function () {
+//     return view('auth.login1');
+// });
 Route::get('/', function () {
-    return view('auth.login1');
-});
-Route::get('/2', function () {
     return view('auth.login');
 });
 
