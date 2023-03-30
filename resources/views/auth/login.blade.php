@@ -100,7 +100,7 @@
     <div class="ui middle aligned center aligned grid">
         <div class="column">
 
-            <img src="assets/img/motogarage1.png" class="image">
+            <img src="http://motomechanics.online/public/assets/img/motogarage1.png" class="image">
 
             <form id="form" method="post" class=" ui large form" action="{{ route('login') }}">
                 @csrf
