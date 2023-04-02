@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\HorariosController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VeiculosController;
+
+Route::get('/teste', [VeiculosController::class, 'teste']);
+
 
 // Route::get('/', function () {
 //     return view('auth.login1');

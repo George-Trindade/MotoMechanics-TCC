@@ -9,10 +9,18 @@ use Illuminate\Support\Facades\Redirect;
 
 class VeiculosController extends Controller
 {
+    public function teste()
+    {
+        return view('teste');
+    }
+
+
+
+
     public function index()
     {
         $veiculos = Veiculo::all();
-        return view('Veiculos.index',compact('veiculos'));
+        return view('Veiculos.index', compact('veiculos'));
     }
 
 
@@ -38,20 +46,20 @@ class VeiculosController extends Controller
 
     public function show($id)
     {
-        $veiculos=Veiculo::find($id);
+        $veiculos = Veiculo::find($id);
         return view('Veiculos.show');
     }
 
     public function edit($id)
     {
-        $veiculos=Veiculo::find($id);
+        $veiculos = Veiculo::find($id);
         return view('Veiculos.edit', compact('veiculos'));
     }
 
 
     public function update(Request $request, $id)
     {
-        $veiculos=Veiculo::find($id);
+        $veiculos = Veiculo::find($id);
         $veiculos->update($request->all());
         return Redirect::route('veiculos.index')->with('Alterado com sucesso!');
     }
@@ -59,7 +67,7 @@ class VeiculosController extends Controller
 
     public function destroy($id)
     {
-        $veiculos=Veiculo::find($id);
+        $veiculos = Veiculo::find($id);
         $veiculos->delete();
         return Redirect::route('veiculos.index')->with('Deletado com sucesso!');
     }

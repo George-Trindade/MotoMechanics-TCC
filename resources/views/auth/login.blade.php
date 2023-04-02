@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <!-- Site Properties -->
-    <title>Login Example - Semantic</title>
+    <title>Login-MotoMechanics</title>
     <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/reset.css">
     <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/site.css">
 
