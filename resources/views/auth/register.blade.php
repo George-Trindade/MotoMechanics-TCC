@@ -94,7 +94,7 @@
             </form>
         </div>
     </div>
-    @include('layouts.footer_login')
+    @include('layouts.footer_register')
 </body>
 
 </html>
@@ -154,7 +154,7 @@
     #div_geral {
         margin: 0 !important;
         padding-top: 25px;
-        padding-bottom: 25px;
+        padding-bottom: 35px;
     }
 
     .item_form {
