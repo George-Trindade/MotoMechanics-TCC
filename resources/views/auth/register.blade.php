@@ -1,125 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar-MotoMechanics</title>
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/semantic.min.css">
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Site Properties -->
+    <title>Login-MotoMechanics</title>
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/reset.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/site.css">
+
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/container.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/grid.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/header.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/image.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/menu.css">
+
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/divider.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/segment.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/form.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/input.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/button.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/list.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/message.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/icon.css">
+
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-    <script src="http://motomechanics.online/public/assets/css/fomantic/dist/semantic.js"></script>
+    <script src="https://motomechanics.online/public/assets/css/fomantic/dist/components/form.js"></script>
+    <script src="https://motomechanics.online/public/assets/css/fomantic/dist/components/transition.js"></script>
+
 </head>
 
 <body>
-    <div class="ui middle aligned center aligned grid">
-        <img src="http://motomechanics.online/public/assets/img/motogarage1.png" class="image">
-    </div>
-    <form id="form" method="POST" action="{{ route('register') }}">
-        @csrf
-        <div class="ui text container itens">
-            <div class="ui segment two column stackable grid container">
-                <div class="column">
-                    <div class="ui red horizontal label large">Nome</div>
-                    <input id="name" type="text" name="name" class="ui segment item">
-                </div>
-                <div class="column">
-                    <div class="ui red horizontal label large">Email</div>
-                    <input id="email" type="email" name="email" class="ui segment item">
-                </div>
-                <div class="column">
-                    <div class="ui red horizontal label large">Telefone</div>
-                    <input id="phone" type="text" name="phone" class="ui segment item">
-                </div>
-                <div class="column">
-                    <div class="ui red horizontal label large">Endereço</div>
-                    <input id="address" type="text" name="address" class="ui segment item">
-                </div>
-                <div class="column">
-                    <div class="ui red horizontal label large">Senha</div>
-                    <input id="password" type="password" name="password" class="ui segment item">
-                </div>
-                <div class="column">
-                    <div class="ui red horizontal label large">Confirme a senha</div>
-                    <input id="password_confirmation" type="password" name="password_confirmation" class="ui segment item">
-                </div>
-                <div class="ui vertical max-widht center aligned segment">
-                    <div class="ui text container max-widht">
-                        <div class="ui large red submit button">Registrar <i class="right arrow icon"></i></div>
+    @include('layouts.header_login')
+    <div id="div_geral">
+        <h1 class="ui center aligned header">Registre-se</h1>
+        <h4 class="ui center aligned header"> Para agendar serviços e acompanhar seus atendimentos.</h4>
+        <div id="div_center" class=" ui centered grid container middle aligned">
+            <form id="form" method="POST" action="{{ route('register') }}">
+                @csrf
+                <div id="div_form" class="ui stackable two column divided grid container">
+                    <div class="row">
+                        <div class="column">
+                            <div class="ui segment">
+                                <h3>Nome</h3>
+                                <input id="name" type="text" name="name" class="ui segment item_form">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="ui segment">
+                                <h3>Email</h3>
+                                <input id="email" type="email" name="email" class="ui segment item_form">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <div class="ui segment">
+                                <h3>Telefone</h3>
+                                <input id="phone" type="text" name="phone" class="ui segment item_form">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="ui segment">
+                                <h3>Endereço</h3>
+                                <input id="address" type="text" name="address" class="ui segment item_form">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <div class="ui segment">
+                                <h3>Senha</h3>
+                                <input id="password" type="password" name="password" class="ui segment item_form">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="ui segment">
+                                <h3>Confirme a senha</h3>
+                                <input id="password_confirmation" type="password" name="password_confirmation" class="ui segment item_form">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui vertical max-widht center aligned segment">
+                        <div class="ui text container max-widht">
+                            <div id="btn_registrar" class="ui large submit button">Registrar <i class="right arrow icon"></i></div>
+                        </div>
                     </div>
 
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
+    @include('layouts.footer_login')
 </body>
 
 </html>
-
 <script>
     $('.submit').on("click", function() {
         document.getElementById("form").submit();
     });
 </script>
-
-
-
 <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html,
     body {
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        /* https: //www.joshwcomeau.com/gradient-generator/ */
-        background-image: linear-gradient(40deg,
-                hsl(12deg 7% 28%) 0%,
-                hsl(11deg 27% 37%) 19%,
-                hsl(10deg 40% 46%) 32%,
-                hsl(9deg 58% 55%) 46%,
-                hsl(7deg 53% 52%) 59%,
-                hsl(5deg 48% 37%) 72%,
-                hsl(3deg 45% 22%) 85%,
-                hsl(7deg 57% 8%) 100%);
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
     }
 
-    .white {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 650px;
-        background-color: white;
+    .divlogo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .itens {
-        margin-top: 35px;
-        max-width: 650px !important;
-        /* background-color: white; */
-
+    #div_center {
+        padding-top: 25px;
+        padding-left: 25px;
     }
 
-    .item {
-
-        width: 98% !important;
-        margin-top: 5px !important;
-        border: 1px solid black !important;
-
-
+    #btn_registrar {
+        background-color: darkred;
+        color: white;
+        min-width: 180px;
     }
 
-    .image {
-        margin-top: 20px;
-        width: 190px;
-        width: 190px;
+    .logo {
+        padding-top: 15px;
+        width: 280px;
+        height: 55px;
     }
 
-    .div-btn {
-        margin-top: 5px !important;
-        padding-bottom: 15px !important;
+    #paddingtop {
+        padding-top: 60px !important;
+        align-self: flex-start !important;
     }
 
-    .column {
-        padding-bottom: 0.5rem !important;
+    .headerLogin {
+        min-height: 65px;
+        background-color: darkred;
     }
 
-    .max-widht {
-        border: 5px !important;
-        max-width: 100% !important;
+    #div_geral {
+        margin: 0 !important;
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .item_form {
+        width: 100%;
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100% !important;
     }
 </style>
