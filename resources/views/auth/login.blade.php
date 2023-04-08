@@ -9,44 +9,86 @@
 
     <!-- Site Properties -->
     <title>Login-MotoMechanics</title>
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/reset.css">
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/site.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/reset.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/site.css">
 
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/container.css">
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/grid.css">
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/header.css">
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/image.css">
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/menu.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/container.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/grid.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/header.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/image.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/menu.css">
 
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/divider.css">
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/segment.css">
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/form.css">
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/input.css">
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/button.css">
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/list.css">
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/message.css">
-    <link rel="stylesheet" type="text/css" href="http://motomechanics.online/public/assets/css/fomantic/dist/components/icon.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/divider.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/segment.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/form.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/input.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/button.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/list.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/message.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/icon.css">
 
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-    <script src="http://motomechanics.online/public/assets/css/fomantic/dist/components/form.js"></script>
-    <script src="http://motomechanics.online/public/assets/css/fomantic/dist/components/transition.js"></script>
+    <script src="https://motomechanics.online/public/assets/css/fomantic/dist/components/form.js"></script>
+    <script src="https://motomechanics.online/public/assets/css/fomantic/dist/components/transition.js"></script>
 
     <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
         body {
-            /* https: //www.joshwcomeau.com/gradient-generator/ */
-            background-image: linear-gradient(40deg,
-                    hsl(12deg 7% 28%) 0%,
-                    hsl(11deg 27% 37%) 19%,
-                    hsl(10deg 40% 46%) 32%,
-                    hsl(9deg 58% 55%) 46%,
-                    hsl(7deg 53% 52%) 59%,
-                    hsl(5deg 48% 37%) 72%,
-                    hsl(3deg 45% 22%) 85%,
-                    hsl(7deg 57% 8%) 100%);
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .divlogo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #btn_login {
+            background-color: darkred;
+            color: white;
+        }
+
+        .logo {
+            padding-top: 15px;
+            width: 280px;
+            height: 55px;
+        }
+
+        #form {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        #msg {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        #paddingtop {
+            padding-top: 60px !important;
+            align-self: flex-start !important;
+        }
+
+        .headerLogin {
+            min-height: 65px;
+            background-color: darkred;
         }
 
         body>.grid {
-            height: 100%;
+            min-height: 500px;
+        }
+
+        #div_geral {
+            margin: 0 !important;
         }
 
         .image {
@@ -57,6 +99,14 @@
 
         .column {
             max-width: 450px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100% !important;
         }
     </style>
     <script>
@@ -96,12 +146,11 @@
 </head>
 
 <body>
-
-    <div class="ui middle aligned center aligned grid">
-        <div class="column">
-
-            <img src="http://motomechanics.online/public/assets/img/motogarage1.png" class="image">
-
+    @include('layouts.header_login')
+    <div id="div_geral" class="ui middle aligned center aligned grid">
+        <div id="paddingtop" class=" column">
+            <h1>Faça seu Login</h1>
+            <h4> Para agendar serviços e acompanhar seus atendimentos.</h4>
             <form id="form" method="post" class=" ui large form" action="{{ route('login') }}">
                 @csrf
                 <div class="ui stacked segment">
@@ -117,19 +166,19 @@
                             <input type="password" name="password" placeholder="Password">
                         </div>
                     </div>
-                    <div class="ui fluid large red submit button">Login</div>
+                    <div id="btn_login" class="ui fluid large submit button">Entrar</div>
                 </div>
 
                 <div class="ui error message"></div>
 
             </form>
 
-            <div class="ui message">
+            <div id="msg" class="ui message">
                 Você é novo? <a style="color:red;text-decoration:none" href="{{route('register')}}">Increver-se</a>
             </div>
         </div>
     </div>
-
+    @include('layouts.footer_login')
 </body>
 
 </html>
@@ -164,7 +213,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="http://127.0.0.1:8000//assets/img/motocicletaBranco">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://motomechanics.online/public//assets/img/motocicletaBranco">
     <link rel="icon" type="image/png" href="../assets/img/motocicletaBranco.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
