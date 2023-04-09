@@ -28,7 +28,7 @@
 </div> -->
 
 <footer class="ui inverted vertical segment">
-    <div class="ui container">
+    <div class="ui container" style="margin-left: 0;">
         <div class="ui stackable grid equal height center aligned">
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
                 <h4 class="ui inverted header">Entre em contato</h4>

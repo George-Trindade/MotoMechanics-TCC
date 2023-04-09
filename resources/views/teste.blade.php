@@ -9,25 +9,43 @@
 
     <!-- Site Properties -->
     <title>Homepage - Semantic</title>
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/reset.css">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/site.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/reset.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/site.css">
 
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/container.css">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/grid.css">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/header.css">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/image.css">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/menu.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/container.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/grid.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/header.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/image.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/menu.css">
 
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/divider.css">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/dropdown.css">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/segment.css">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/button.css">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/list.css">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/icon.css">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/sidebar.css">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/fomantic/dist/components/transition.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/divider.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/dropdown.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/segment.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/button.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/list.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/icon.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/components/transition.css">
 
     <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .column {
+            max-width: 450px;
+        }
+
         .hidden.menu {
             display: none;
         }
@@ -99,7 +117,38 @@
             display: none;
         }
 
-        @media only screen and (max-width: 700px) {
+        #img_logo {
+            padding-top: 15px;
+            width: 280px;
+            height: 55px;
+        }
+
+        #img_user {
+            width: 60px !important;
+            height: 50px !important;
+            border-radius: 25px !important;
+        }
+
+        @media only screen and (min-width: 801px) {
+            #span_user {
+                width: 260px !important;
+                align-self: center !important;
+                margin-left: 0 !important;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #img_logo {
+                width: 329px;
+            }
+
+            #div_menu {
+                margin-right: 0;
+            }
+        }
+
+
+        @media only screen and (max-width: 800px) {
             #logo {
                 display: none !important;
             }
@@ -107,13 +156,23 @@
             #logo-nome {
                 display: block !important;
                 align-self: center !important;
-                margin-left: 50px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
 
-            #logo-nome>img {
-                width: 120px;
-
+            #logo_mobile {
+                /* width: 120px; */
+                /* padding-top: 10px; */
+                width: 180px;
+                height: 35px;
             }
+
+            #img_user {
+                width: 50px !important;
+                height: 50px !important;
+                border-radius: 25px !important;
+            }
+
 
             .ui.fixed.menu {
                 display: none !important;
@@ -145,9 +204,9 @@
     </style>
 
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-    <script src="http://127.0.0.1:8000/assets/css/fomantic/dist/components/visibility.js"></script>
-    <script src="http://127.0.0.1:8000/assets/css/fomantic/dist/components/sidebar.js"></script>
-    <script src="http://127.0.0.1:8000/assets/css/fomantic/dist/components/transition.js"></script>
+    <script src="http://192.168.1.4:8000/assets/css/fomantic/dist/components/visibility.js"></script>
+    <script src="http://192.168.1.4:8000/assets/css/fomantic/dist/components/sidebar.js"></script>
+    <script src="http://192.168.1.4:8000/assets/css/fomantic/dist/components/transition.js"></script>
     <script>
         $(document)
             .ready(function() {
@@ -182,8 +241,6 @@
     <div style="min-height: 250px;">
 
     </div>
-
-
 
     @include('layouts.footer')
 </body>

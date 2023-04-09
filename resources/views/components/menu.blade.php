@@ -1,21 +1,23 @@
-<div class="ui container" style="width: 100%!important;background:gray;margin-left:0px;">
-    <div class=" ui inverted large secondary pointing menu" style="border-bottom: 0;margin-left: 15px;margin-right: 15px;">
-        <a class="toc item" style="align-self: center !important;">
-            <i class="sidebar icon"></i>
-        </a>
-        <a class="active item" style="align-self: center;">Home</a>
-        <a class="item" style="align-self: center;">Work</a>
-        <a class="item" style="align-self: center;">Company</a>
-        <a class="item" style="align-self: center;">Careers</a>
-        <a id="logo" class="center item">
-            <img src="http://127.0.0.1:8000/assets/img/motogarage1.png" style="width:80px;height:80px;">
-        </a>
+<div class="ui container" style="width: 100%!important;background:darkred;margin-left:0px;">
+    <div id="div_menu" class="ui inverted large secondary pointing menu" style="border-bottom: 0;margin-left: 15px;margin-right: 15px;">
+        <div style="display:flex">
+            <a class="toc item" style="align-self: center !important;">
+                <i class="sidebar large icon"></i>
+            </a>
+            <a class="active item" style="align-self: center;">Agendamentos</a>
+            <a class="item" style="align-self: center;">Orçamentos</a>
+            <a class="item" style="align-self: center;">Meus veículos</a>
+            <!-- <a class="item" style="align-self: center;">Careers</a> -->
+        </div>
+        <div id="logo" class="center item">
+            <img id="img_logo" src="http://192.168.1.4:8000/assets/img/logodef.png">
+        </div>
         <a id="logo-nome" class="center item" style="display:none">
-            <img src="http://127.0.0.1:8000/assets/img/logo-nome.png">
+            <img id="logo_mobile" src="http://192.168.1.4:8000/assets/img/logodef.png">
         </a>
-        <div class="right item" style="align-self: center !important;">
+        <div id="span_user" class="right item" style="align-self: center !important; margin-left:0!important">
             <span class="ui avatar image" style="width:3em !important;height: 3em!important;">
-                <img alt="Image placeholder" style="width:3em !important;height: 3em!important;" src="http://motomechanics.online/public/assets/img/tiringa.jpg">
+                <img id="img_user" alt="Image placeholder" src="http://motomechanics.online/public/assets/img/tiringa.jpg">
             </span>
         </div>
     </div>
