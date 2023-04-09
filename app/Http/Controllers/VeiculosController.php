@@ -14,7 +14,10 @@ class VeiculosController extends Controller
         return view('teste');
     }
 
-
+    public function base()
+    {
+        return view('base');
+    }
 
 
     public function index()

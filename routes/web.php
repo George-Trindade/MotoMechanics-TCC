@@ -7,7 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VeiculosController;
 
 Route::get('/teste', [VeiculosController::class, 'teste']);
-
+Route::get('/base', [VeiculosController::class, 'base']);
 
 // Route::get('/', function () {
 //     return view('auth.login1');
