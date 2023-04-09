@@ -9,6 +9,7 @@
 
     <!-- Site Properties -->
     <title>Login-MotoMechanics</title>
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/components/footer.css">
     <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/reset.css">
     <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/site.css">
 

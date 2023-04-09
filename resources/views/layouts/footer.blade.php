@@ -28,23 +28,3 @@
         </div>
     </div>
 </footer>
-
-<style>
-    @media only screen and (min-width: 768px) {
-        .ui.inverted.large.horizontal.list.right.aligned {
-            justify-content: flex-end;
-        }
-    }
-
-    @media only screen and (min-width: 768px) {
-        .ui.divided.list-white>li {
-            display: flex;
-            justify-content: space-between;
-        }
-    }
-
-
-    .ui.inverted.vertical.segment {
-        background-color: darkred !important;
-    }
-</style>

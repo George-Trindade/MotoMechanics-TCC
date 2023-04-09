@@ -1,32 +1,3 @@
-<!-- <div id="footer" class="ui vertical footer segment " style="background:darkred">
-    <div class="ui container">
-        <div class="ui stackable inverted divided equal height stackable grid">
-            <div class="three wide column">
-                <h4 class="ui inverted header">About</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item">Sitemap</a>
-                    <a href="#" class="item">Contact Us</a>
-                    <a href="#" class="item">Religious Ceremonies</a>
-                    <a href="#" class="item">Gazebo Plans</a>
-                </div>
-            </div>
-            <div class="three wide column">
-                <h4 class="ui inverted header">Services</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item">Banana Pre-Order</a>
-                    <a href="#" class="item">DNA FAQ</a>
-                    <a href="#" class="item">How To Access</a>
-                    <a href="#" class="item">Favorite X-Men</a>
-                </div>
-            </div>
-            <div class="seven wide column">
-                <h4 class="ui inverted header">Footer Header</h4>
-                <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <footer class="ui inverted vertical segment">
     <div class="ui container" style="margin-left: 0;">
         <div class="ui stackable grid equal height center aligned">
@@ -57,23 +28,3 @@
         </div>
     </div>
 </footer>
-
-<style>
-    @media only screen and (min-width: 768px) {
-        .ui.inverted.large.horizontal.list.right.aligned {
-            justify-content: flex-end;
-        }
-    }
-
-    @media only screen and (min-width: 768px) {
-        .ui.divided.list-white>li {
-            display: flex;
-            justify-content: space-between;
-        }
-    }
-
-
-    .ui.inverted.vertical.segment {
-        background-color: darkred !important;
-    }
-</style>
