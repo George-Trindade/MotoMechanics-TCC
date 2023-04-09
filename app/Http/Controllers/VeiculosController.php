@@ -20,13 +20,6 @@ class VeiculosController extends Controller
     }
 
 
-    public function index()
-    {
-        $veiculos = Veiculo::all();
-        return view('Veiculos.index', compact('veiculos'));
-    }
-
-
     public function create()
     {
         return view('Veiculos.create');
@@ -34,44 +27,85 @@ class VeiculosController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'Modelo' => 'required|max:120',
+            'Marca' => 'required|max:20',
+            'Ano' => 'required|max:10',
+            'Cor' => 'required|max:20',
+            'Placa' => 'required|unique:veiculos|max:10',
+            'fotoveiculo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'user_id' => 'required|exists:users,id'
+        ]);
+        $veiculo = Veiculo::create($request->all());
 
-        $veiculos = new Veiculo;
-        $veiculos->Modelo = $request->Modelo;
-        $veiculos->Marca = $request->Marca;
-        $veiculos->Ano = $request->Ano;
-        $veiculos->Cor = $request->Cor;
-        $veiculos->Placa = $request->Placa;
-        $veiculos->user_id = Auth::user()->id;
-        $veiculos->save();
+        if ($request->hasFile('fotoveiculo')) {
+            $image = $request->file('fotoveiculo');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/veiculos', $filename);
+            $veiculo->fotoveiculo = $filename;
+        }
 
-        return Redirect::route('veiculos.index')->with('Criado com sucesso!');
+        $veiculo->save();
+        return redirect()->route('veiculos.index')
+            ->with('success', 'Veículo criado com sucesso.');
     }
 
-    public function show($id)
+
+    public function index()
     {
-        $veiculos = Veiculo::find($id);
-        return view('Veiculos.show');
+        $veiculos = Veiculo::with('user')->get();
+
+        return view('veiculos.index', compact('veiculos'));
     }
 
-    public function edit($id)
+    public function show(Veiculo $veiculo)
     {
-        $veiculos = Veiculo::find($id);
-        return view('Veiculos.edit', compact('veiculos'));
+        return view('veiculos.show', compact('veiculo'));
     }
 
+
+    public function edit(Request $request, $id)
+    {
+        $veiculo = Veiculo::find($id);
+        return view('veiculos.update', compact('veiculo'));
+    }
 
     public function update(Request $request, $id)
     {
-        $veiculos = Veiculo::find($id);
-        $veiculos->update($request->all());
-        return Redirect::route('veiculos.index')->with('Alterado com sucesso!');
+        $request->validate([
+            'Modelo' => 'required|max:120',
+            'Marca' => 'required|max:20',
+            'Ano' => 'required|max:10',
+            'Cor' => 'required|max:20',
+            'Placa' => 'required|max:10', 'max:10',
+            'fotoveiculo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'user_id' => 'required|exists:users,id'
+        ]);
+
+        $veiculo = Veiculo::find($id);
+        $veiculo->update($request->all());
+
+        // Verifica se o Request contém uma imagem a ser atualizada
+        if ($request->hasFile('fotoveiculo')) {
+            // Armazena a nova imagem na pasta public/veiculos
+            $image = $request->file('fotoveiculo');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/veiculos', $filename);
+            $veiculo->fotoveiculo = $filename;
+        }
+
+        // Salva as alterações no modelo Veiculo
+        $veiculo->save();
+
+        return redirect()->route('veiculos.index')
+            ->with('success', 'Veículo atualizado com sucesso.');
     }
 
-
-    public function destroy($id)
+    public function destroy(Veiculo $veiculo)
     {
-        $veiculos = Veiculo::find($id);
-        $veiculos->delete();
-        return Redirect::route('veiculos.index')->with('Deletado com sucesso!');
+        $veiculo->delete();
+
+        return redirect()->route('veiculos.index')
+            ->with('success', 'Veículo excluído com sucesso.');
     }
 }

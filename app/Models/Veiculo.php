@@ -15,9 +15,12 @@ class Veiculo extends Model
         'Ano',
         'Cor',
         'Placa',
+        'fotoveiculo',
+        'user_id'
 
     ];
-    public function user(){
-        return $this->belongsTo(Users::class,'user_id');
+    public function user()
+    {
+        return $this->belongsTo(Users::class, 'user_id');
     }
 }
