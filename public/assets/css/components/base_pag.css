@@ -168,4 +168,7 @@ body {
         margin-top: 0.5em;
         font-size: 1.5em;
     }
+    .ui.vertical.inverted.sidebar.menu.left.uncover.visible {
+        background: darkred !important;
+    }
 }
