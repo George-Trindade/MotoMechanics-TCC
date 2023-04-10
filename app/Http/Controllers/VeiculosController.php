@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
+
 class VeiculosController extends Controller
 {
     public function teste()
@@ -53,7 +54,8 @@ class VeiculosController extends Controller
 
     public function index()
     {
-        $veiculos = Veiculo::with('user')->get();
+        // $veiculos = Veiculo::with('user')->get();
+        $veiculos = Veiculo::all();
 
         return view('veiculos.index', compact('veiculos'));
     }

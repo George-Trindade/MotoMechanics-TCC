@@ -8,11 +8,13 @@ use App\Http\Controllers\VeiculosController;
 
 Route::get('/teste', [VeiculosController::class, 'teste']);
 Route::get('/base', [VeiculosController::class, 'base']);
-Route::get('/veiculo', [VeiculosController::class, 'create']);
+
+Route::get('/veiculo/', [VeiculosController::class, 'index']);
+Route::get('/veiculo/novo', [VeiculosController::class, 'create']);
 Route::post('/veiculo/novo', [VeiculosController::class, 'store'])->name('veiculos.store');
 Route::get('/veiculos/alterar/{id}', [VeiculosController::class, 'edit'])->name('veiculos.edit')->middleware('auth');
 Route::put('/veiculos/alterar/{id}', [VeiculosController::class, 'update'])->name('veiculos.update')->middleware('auth');
-
+Route::delete('/veiculos/{id}', [VeiculosController::class, 'destroy'])->name('veiculos.destroy')->middleware('auth');
 
 
 Route::get('/', function () {
