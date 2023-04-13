@@ -19,6 +19,12 @@
             <span class="ui avatar image" style="width:3em !important;height: 3em!important;">
                 <img id="img_user" alt="Image placeholder" src="http://motomechanics.online/public/assets/img/tiringa.jpg">
             </span>
+            <p style="
+                font-weight: bold;
+                font-size: 20px;
+                margin-left: 5px;
+                margin-top: 5px;">Tiringa</p>
         </div>
+
     </div>
 </div>

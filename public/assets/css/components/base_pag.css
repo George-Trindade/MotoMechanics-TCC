@@ -10,6 +10,7 @@ body {
     padding: 0;
     height: 100%;
     width: 100%;
+    min-height: 700px;
 }
 
 .column {
@@ -101,7 +102,7 @@ body {
 
 @media only screen and (min-width: 801px) {
     #span_user {
-        width: 260px !important;
+        width: 342px !important;
         align-self: center !important;
         margin-left: 0 !important;
         align-items: center;
@@ -121,7 +122,9 @@ body {
     #logo {
         display: none !important;
     }
-
+    p {
+        display: none;
+    }
     #logo-nome {
         display: block !important;
         align-self: center !important;
@@ -171,4 +174,71 @@ body {
     .ui.vertical.inverted.sidebar.menu.left.uncover.visible {
         background: darkred !important;
     }
+}
+
+@media only screen and (min-width: 992px) {
+    .ui.column.grid > [class*="four wide computer"].column,
+    .ui.grid > .column.row > [class*="four wide computer"].column,
+    .ui.grid > .row > [class*="four wide computer"].column,
+    .ui.grid > [class*="four wide computer"].column {
+        width: 100% !important;
+    }
+    body {
+        min-height: 750px !important;
+    }
+}
+
+#redes {
+    margin: 0;
+}
+#logo_space_footer {
+    margin: 0;
+}
+#logo_space_footer > img {
+    width: 250px;
+    height: 40px;
+}
+.ui.container.centered.grid {
+    max-width: 800px;
+    margin-top: 40px;
+}
+
+.ui.form {
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 801px) {
+    .ten.wide.column {
+        min-width: 450px !important;
+    }
+    select {
+        height: 50px !important;
+    }
+    .data {
+        height: 50px !important;
+    }
+}
+
+.label {
+    font-size: 18px !important;
+}
+
+.ten.wide.column {
+    min-width: 600px;
+}
+
+.ui.button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: darkred;
+    color: white;
+}
+
+.ui.button:hover {
+    background-color: #2185d0;
+    color: white;
+}
+.field.centered {
+    display: flex;
+    justify-content: center;
 }

@@ -11,7 +11,7 @@
             </div>
             <div class="sixteen wide mobile four wide computer column">
                 <h4 class="ui inverted header">Nos siga nas redes sociais</h4>
-                <div class="ui inverted huge horizontal list right aligned">
+                <div id="redes" class="ui inverted huge horizontal list right aligned">
                     <div class="item"><a href="#"><i class="large facebook icon"></i></a></div>
                     <div class="item"><a href="#"><i class="large twitter icon"></i></a></div>
                     <div class="item"><a href="#"><i class="large instagram icon"></i></a></div>
@@ -20,8 +20,8 @@
 
             </div>
             <div class="sixteen wide mobile four wide computer column">
-                <h4 class="ui inverted header"></h4>
-                <div class="ui inverted large horizontal list center aligned">
+                <h4 class="ui inverted header">Desenvolvido por</h4>
+                <div id="logo_space_footer" class="ui inverted large horizontal list center aligned">
                     <img src="https://motomechanics.online/public/assets/img/logodef.png">
                 </div>
             </div>

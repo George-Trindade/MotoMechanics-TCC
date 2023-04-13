@@ -1,30 +1,19 @@
 function capturar() {
     var capturando = "";
     capturando = document.getElementById("data").value;
-    //capturando = data.split("-").reverse().join("-");
-    //document.getElementById('datadigitada').innerHTML = capturando;
-    $.getJSON(
-        "/agendamentos/novo/horarios/" + capturando,
-        $("#conteudo").css({ display: "none" }) +
-            $("#div-carregamento").css({ display: "flex" }) +
-            $("#carregamento").css({ display: "block" }),
-        function (data) {
-            $("#select-horarios").find("option").remove() +
-                $("#div-carregamento").css({ display: "none" }) +
-                $("#carregamento").css({ display: "none" }) +
-                $("#conteudo").css({ display: "block" }) +
-                $("<option>")
-                    .val(null)
-                    .text("Selecione um horário")
-                    .appendTo("#select-horarios");
-            $.each(data, function (indice, valor) {
-                $("<option>")
-                    .val(valor.hora)
-                    .text(valor.hora)
-                    .appendTo("#select-horarios");
-            });
-        }
-    );
+    $.getJSON("/agendamentos/novo/horarios/" + capturando, function (data) {
+        $("#select-horarios").find("option").remove() +
+            $("<option>")
+                .val(null)
+                .text("Selecione um horário")
+                .appendTo("#select-horarios");
+        $.each(data, function (indice, valor) {
+            $("<option>")
+                .val(valor.hora)
+                .text(valor.hora)
+                .appendTo("#select-horarios");
+        });
+    });
     $.ajaxSetup({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -36,45 +25,59 @@ function ConfirmSubmit() {
     var capturando = "";
     var select = document.getElementById("select-horarios");
     var horario = select.options[select.selectedIndex].value;
+    var veiculo = document.getElementById("veiculo_id");
+    var veiculo_selected = veiculo.options[veiculo.selectedIndex].text;
+    var servico = document.getElementById("servico");
+    var servico_selected = servico.options[servico.selectedIndex].text;
     var respJson;
     capturando = document.getElementById("data").value;
 
     if (capturando == "") {
-        alert("Selecione uma data");
+        $("#toast-alert").toast();
     } else if (horario == "Selecione um horário" || horario == "") {
-        alert("Selecione um horário");
+        $("#toast-horario").toast();
+    } else if (veiculo_selected == "Selecione um veículo" || veiculo == "") {
+        $("#toast-veiculo").toast();
+    } else if (servico_selected == "Selecione um serviço" || servico == "") {
+        $("#toast-servico").toast();
     } else {
-        console.log(horario);
-        x = confirm("Tem certeza que quer enviar este pedido?");
-        if (x) {
-            $.getJSON(
-                "/agendamentos/novo/horarios/" + capturando + "/" + horario,
-                $("#conteudo").css({ display: "none" }) +
-                    $("#div-carregamento").css({ display: "flex" }) +
-                    $("#carregamento").css({ display: "block" }),
-
-                function (data) {
-                    respJson = "saida:" + data["success"];
-                    console.log(respJson);
-                    if (respJson != "saida:false") {
-                        alert("Selecione um horário válido!");
-                        capturar();
-                        return true;
-                    } else {
-                        document.getElementById("Form").submit();
-                    }
-                }
-            );
-            $.ajaxSetup({
-                headers: {
-                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                        "content"
-                    ),
+        $("#modal-submit")
+            .modal({
+                closable: false,
+                onDeny: function () {
+                    return true;
                 },
-            });
-        } else {
-            return false;
-        }
+                onApprove: function () {
+                    $.getJSON(
+                        "/agendamentos/novo/horarios/" +
+                            capturando +
+                            "/" +
+                            horario,
+                        function (data) {
+                            respJson = "saida:" + data["success"];
+                            console.log(respJson);
+                            if (respJson != "saida:false") {
+                                $("#toast-alert").toast({
+                                    class: "error",
+                                    message: "Selecione um horário válido!",
+                                });
+                                capturar();
+                                return true;
+                            } else {
+                                document.getElementById("Form").submit();
+                            }
+                        }
+                    );
+                    $.ajaxSetup({
+                        headers: {
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                                "content"
+                            ),
+                        },
+                    });
+                },
+            })
+            .modal("show");
     }
 }
 function ConfirmAction() {
@@ -83,32 +86,21 @@ function ConfirmAction() {
     var horario = select.options[select.selectedIndex].value;
     var respJson;
     capturando = document.getElementById("data").value;
-
     $.getJSON(
         "/agendamentos/novo/horarios/" + capturando + "/" + horario,
-        $("#conteudo").css({ display: "none" }) +
-            $("#div-carregamento").css({ display: "flex" }) +
-            $("#carregamento").css({ display: "block" }),
-
         function (data) {
             respJson = "saida:" + data["success"];
             console.log(respJson);
             if (respJson != "saida:false") {
-                alert("Selecione um horário válido!");
+                $("#toast-horario").toast();
                 $.getJSON(
                     "/agendamentos/novo/horarios/" + capturando + "/" + horario,
-                    $("#conteudo").css({ display: "none" }) +
-                        $("#div-carregamento").css({ display: "flex" }) +
-                        $("#carregamento").css({ display: "block" }),
                     function (data) {
                         $("#select-horarios").find("option").remove() +
-                            $("#div-carregamento").css({ display: "none" }) +
-                            $("#carregamento").css({ display: "none" }) +
-                            $("#conteudo").css({ display: "block" });
-                        $("<option>")
-                            .val(null)
-                            .text("Selecione um horário")
-                            .appendTo("#select-horarios");
+                            $("<option>")
+                                .val(null)
+                                .text("Selecione um horário")
+                                .appendTo("#select-horarios");
                         $.each(data, function (indice, valor) {
                             $("<option>")
                                 .val(valor.hora)
@@ -127,9 +119,6 @@ function ConfirmAction() {
                 });
                 return true;
             } else {
-                $("#div-carregamento").css({ display: "none" }) +
-                    $("#carregamento").css({ display: "none" }) +
-                    $("#conteudo").css({ display: "block" });
                 return false;
             }
         }
