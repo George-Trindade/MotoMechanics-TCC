@@ -61,10 +61,7 @@
                     <div class="field">
                         <label class="label">Serviço</label>
                         <select class="ui fluid dropdown" id="servico" name="servico" value="{{old('Servico')}}">
-                            <option value="">Selecione um serviço</option>
-                            <option value="Troca de óleo">Troca de óleo</option>
-                            <option value="Troca de relação">Troca de relação</option>
-                            <option value="Troca de pneu">Troca de pneu</option>
+
                         </select>
                     </div>
                 </div>
@@ -150,6 +147,36 @@
 
 <script>
     $(document).ready(function() {
+        var servicos = {
+            "troca-oleo": "Troca de óleo",
+            "troca-relacao": "Troca de relação",
+            "troca-pneu": "Troca de pneu",
+            "ajuste-carburador": "Ajuste de carburador",
+            "limpeza-carburador": "Limpeza de carburador",
+            "troca-velas": "Troca de velas",
+            "troca-corrente": "Troca de corrente",
+            "revisao-eletrica": "Revisão elétrica",
+            "troca-bateria": "Troca de bateria",
+            "troca-lampadas": "Troca de lâmpadas",
+            "troca-pastilhas-freio": "Troca de pastilhas de freio",
+            "ajuste-freio": "Ajuste de freio",
+            "troca-fluido-freio": "Troca de fluido de freio",
+            "limpeza-filtro-ar": "Limpeza de filtro de ar",
+            "troca-filtro-ar": "Troca de filtro de ar",
+            "troca-vela-ignicao": "Troca de vela de ignição",
+            "ajuste-valvulas": "Ajuste de válvulas",
+            "troca-rolamentos": "Troca de rolamentos",
+            "revisao-suspensao": "Revisão de suspensão",
+            "troca-amortecedor": "Troca de amortecedor"
+        };
+        var select = $("#servico");
+        select.append('<option value="">Selecione um serviço</option>');
+        $.each(servicos, function(value, text) {
+            select.append('<option value="' + value + '">' + text + '</option>');
+        });
+        select.dropdown();
+
+
         $('#select-horarios').dropdown();
         $('#veiculo_id').dropdown();
         $('#servico').dropdown();

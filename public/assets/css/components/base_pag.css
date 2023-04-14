@@ -209,13 +209,19 @@ body {
 
 @media only screen and (max-width: 801px) {
     .ten.wide.column {
-        min-width: 450px !important;
+        min-width: 380px !important;
     }
     select {
         height: 50px !important;
     }
     .data {
         height: 50px !important;
+    }
+    /* .ui.inverted.vertical.segment {
+        position: relative !important;
+    } */
+    body {
+        min-height: 900px !important;
     }
 }
 
