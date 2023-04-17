@@ -9,14 +9,6 @@ use App\Http\Controllers\VeiculosController;
 Route::get('/teste', [VeiculosController::class, 'teste']);
 Route::get('/base', [VeiculosController::class, 'base']);
 
-Route::get('/veiculo/', [VeiculosController::class, 'index']);
-Route::get('/veiculo/novo', [VeiculosController::class, 'create']);
-Route::post('/veiculo/novo', [VeiculosController::class, 'store'])->name('veiculos.store');
-Route::get('/veiculos/alterar/{id}', [VeiculosController::class, 'edit'])->name('veiculos.edit')->middleware('auth');
-Route::put('/veiculos/alterar/{id}', [VeiculosController::class, 'update'])->name('veiculos.update')->middleware('auth');
-Route::delete('/veiculos/{id}', [VeiculosController::class, 'destroy'])->name('veiculos.destroy')->middleware('auth');
-
-
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -47,3 +39,11 @@ Route::get('/admin/agendamentos/conclui{id}', [AdminController::class, 'editDone
 Route::put('/admin/agendamentos/conclui/{id}', [AdminController::class, 'concluiAgendamentos'])->name('admin.concluiAgendamentos')->middleware('admin');
 Route::delete('/admin/agendamentos/delete/{id}', [AdminController::class, 'destroyAgendamentos'])->name('admin.destroyAgendamentos')->middleware('admin');
 Route::get('/admin/agendamentos/get/ajaxsolicitados', [AdminController::class, 'ajaxAgendamento'])->name('admin.ajaxSolicitados')->middleware('admin');
+
+//Veiculos
+Route::get('/veiculo/', [VeiculosController::class, 'index'])->name('veiculos.index');;
+Route::get('/veiculo/novo', [VeiculosController::class, 'create'])->name('veiculos.create');
+Route::post('/veiculo/novo', [VeiculosController::class, 'store'])->name('veiculos.store');
+Route::get('/veiculos/alterar/{id}', [VeiculosController::class, 'edit'])->name('veiculos.edit')->middleware('auth');
+Route::put('/veiculos/alterar/{id}', [VeiculosController::class, 'update'])->name('veiculos.update')->middleware('auth');
+Route::delete('/veiculos/{id}', [VeiculosController::class, 'destroy'])->name('veiculos.destroy')->middleware('auth');
