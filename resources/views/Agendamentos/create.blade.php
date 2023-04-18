@@ -62,7 +62,7 @@
                     </div>
                     <div class="field">
                         <label class="label">Serviço</label>
-                        <select class="ui fluid dropdown" id="servico" name="servico" value="{{old('Servico')}}">
+                        <select class="ui search fluid dropdown" id="servico" name="servico" value="{{old('Servico')}}">
 
                         </select>
                     </div>
@@ -150,26 +150,25 @@
 <script>
     $(document).ready(function() {
         var servicos = {
-            "troca-oleo": "Troca de óleo",
-            "troca-relacao": "Troca de relação",
-            "troca-pneu": "Troca de pneu",
             "ajuste-carburador": "Ajuste de carburador",
-            "limpeza-carburador": "Limpeza de carburador",
-            "troca-velas": "Troca de velas",
-            "troca-corrente": "Troca de corrente",
-            "revisao-eletrica": "Revisão elétrica",
-            "troca-bateria": "Troca de bateria",
-            "troca-lampadas": "Troca de lâmpadas",
-            "troca-pastilhas-freio": "Troca de pastilhas de freio",
             "ajuste-freio": "Ajuste de freio",
-            "troca-fluido-freio": "Troca de fluido de freio",
-            "limpeza-filtro-ar": "Limpeza de filtro de ar",
-            "troca-filtro-ar": "Troca de filtro de ar",
-            "troca-vela-ignicao": "Troca de vela de ignição",
             "ajuste-valvulas": "Ajuste de válvulas",
-            "troca-rolamentos": "Troca de rolamentos",
+            "limpeza-carburador": "Limpeza de carburador",
+            "limpeza-filtro-ar": "Limpeza de filtro de ar",
+            "revisao-eletrica": "Revisão elétrica",
             "revisao-suspensao": "Revisão de suspensão",
-            "troca-amortecedor": "Troca de amortecedor"
+            "troca-amortecedor": "Troca de amortecedor",
+            "troca-bateria": "Troca de bateria",
+            "troca-corrente": "Troca de corrente",
+            "troca-fluido-freio": "Troca de fluido de freio",
+            "troca-lampadas": "Troca de lâmpadas",
+            "troca-oleo": "Troca de óleo",
+            "troca-pastilhas-freio": "Troca de pastilhas de freio",
+            "troca-pneu": "Troca de pneu",
+            "troca-relacao": "Troca de relação",
+            "troca-rolamentos": "Troca de rolamentos",
+            "troca-vela-ignicao": "Troca de vela de ignição",
+            "troca-velas": "Troca de velas"
         };
         var select = $("#servico");
         select.append('<option value="">Selecione um serviço</option>');
