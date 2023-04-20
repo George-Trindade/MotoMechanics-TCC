@@ -77,12 +77,12 @@
     </div>
 
     <!-- Modal Submit -->
-    <div id="modal-submit" class="ui mini test modal front transition hidden">
-        <div class="header">
+    <div id="modal-submit" class="ui test modal front transition hidden ui responsive">
+        <div class="header centered">
             Agendar serviço
         </div>
-        <div class="content">
-            <p>Tem certeza?</p>
+        <div class="content centered">
+            Tem certeza?
         </div>
         <div class="actions">
             <div class="ui negative button">
@@ -146,29 +146,34 @@
 </body>
 
 </html>
-
+<style>
+    #modal-submit.ui.modal {
+        width: auto !important;
+    }
+</style>
 <script>
     $(document).ready(function() {
         var servicos = {
-            "ajuste-carburador": "Ajuste de carburador",
-            "ajuste-freio": "Ajuste de freio",
-            "ajuste-valvulas": "Ajuste de válvulas",
-            "limpeza-carburador": "Limpeza de carburador",
-            "limpeza-filtro-ar": "Limpeza de filtro de ar",
-            "revisao-eletrica": "Revisão elétrica",
-            "revisao-suspensao": "Revisão de suspensão",
-            "troca-amortecedor": "Troca de amortecedor",
-            "troca-bateria": "Troca de bateria",
-            "troca-corrente": "Troca de corrente",
-            "troca-fluido-freio": "Troca de fluido de freio",
-            "troca-lampadas": "Troca de lâmpadas",
-            "troca-oleo": "Troca de óleo",
-            "troca-pastilhas-freio": "Troca de pastilhas de freio",
-            "troca-pneu": "Troca de pneu",
-            "troca-relacao": "Troca de relação",
-            "troca-rolamentos": "Troca de rolamentos",
-            "troca-vela-ignicao": "Troca de vela de ignição",
-            "troca-velas": "Troca de velas"
+            "Ajuste de carburador": "Ajuste de carburador",
+            "Ajuste de freio": "Ajuste de freio",
+            "Ajuste de válvulas": "Ajuste de válvulas",
+            "Limpeza de carburador": "Limpeza de carburador",
+            "Limpeza de filtro de ar": "Limpeza de filtro de ar",
+            "Revisão elétrica": "Revisão elétrica",
+            "Revisão de suspensão": "Revisão de suspensão",
+            "Troca de amortecedor": "Troca de amortecedor",
+            "Troca de bateria": "Troca de bateria",
+            "Troca de corrente": "Troca de corrente",
+            "Troca de fluido de freio": "Troca de fluido de freio",
+            "Troca de lâmpadas": "Troca de lâmpadas",
+            "Troca de óleo": "Troca de óleo",
+            "Troca de pastilhas de freio": "Troca de pastilhas de freio",
+            "Troca de pneu": "Troca de pneu",
+            "Troca de relação": "Troca de relação",
+            "Troca de rolamentos": "Troca de rolamentos",
+            "Troca de vela de ignição": "Troca de vela de ignição",
+            "Troca de velas": "Troca de velas"
+
         };
         var select = $("#servico");
         select.append('<option value="">Selecione um serviço</option>');

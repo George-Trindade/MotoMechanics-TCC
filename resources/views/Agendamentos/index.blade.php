@@ -42,14 +42,14 @@
                     <a class="item custom-tab" data-tab="concluido">Concluído</a>
                 </div>
                 <div id="solicitado" data-tab="solicitado">
-                    <div id="cards" class="ui centered four stackable cards container">
+                    <div id="cards" class="ui centered three stackable cards container">
                         @php $cont=0; @endphp
                         @foreach($agendamentos as $agendamento)
                         @if($agendamento->status == 'solicitado')
                         @php $cont=+1; @endphp
                         <div class="ui card">
                             <div class="ui centered content center aligned">
-                                <div class="ui card">
+                                <div class="ui card centered">
                                     <div class="ui centered content center aligned">
                                         <div class="header">
                                             <h2>{{$agendamento->servico}}</h2>
@@ -64,7 +64,10 @@
                                             </h3>
                                         </div>
                                         <div class="description">
-                                            <h4>Horário: {{$agendamento->horario}} | Data: {{$agendamento->date}}</h4>
+                                            <h4>Horário: {{$agendamento->horario}}</h4>
+                                        </div>
+                                        <div class="description">
+                                            <h4>Data: {{$agendamento->date}}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +76,7 @@
                                         <form id="" action="{{route('agendamentos.destroy',$agendamento->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="button" class="ui button same-size-button" onclick="ConfirmSubmit()">Excluir</button>
+                                            <button type="button" class="ui button same-size-button" onclick="ConfirmSubmit()">Cancelar</button>
                                         </form>
                                         <div class="or" data-text="ou"></div>
                                         <a href="{{route('agendamentos.edit',$agendamento->id)}}" class="ui teal button same-size-button">Editar</a>
@@ -87,7 +90,7 @@
                         <div class="ui center aligned huge message">
                             <div class="content">
                                 <div class="header">
-                                    Não há histórico de agendamentos solicitados!
+                                    Não há histórico de serviços solicitados!
                                 </div>
                                 Faça a solicitação de um novo agendamento.
                             </div>
@@ -101,7 +104,7 @@
                         @foreach($agendamentos as $agendamento)
                         @if($agendamento->status == 'agendado')
                         @php $cont=+1; @endphp
-                        <div class="ui card">
+                        <div class="ui card centered">
                             <div class="ui centered content center aligned">
                                 <div class="header">
                                     <h2>{{$agendamento->servico}}</h2>
@@ -116,7 +119,10 @@
                                     </h3>
                                 </div>
                                 <div class="description">
-                                    <h4>Horário: {{$agendamento->horario}} | Data: {{$agendamento->date}}</h4>
+                                    <h4>Horário: {{$agendamento->horario}}</h4>
+                                </div>
+                                <div class="description">
+                                    <h4>Data: {{$agendamento->date}}</h4>
                                 </div>
                             </div>
                             <div class="extra content centered">
@@ -135,7 +141,7 @@
                         <div class="ui center aligned huge message">
                             <div class="content">
                                 <div class="header">
-                                    Não há histórico de agendamentos agendados!
+                                    Não há histórico de serviços agendados!
                                 </div>
                                 Porquê não tenta atualizar a página?
                             </div>
@@ -150,7 +156,7 @@
                         @foreach($agendamentos as $agendamento)
                         @if($agendamento->status == 'concluido')
                         @php $cont=+1; @endphp
-                        <div class="ui card">
+                        <div class="ui card centered">
                             <div class="ui centered content center aligned">
                                 <div class="header">
                                     <h2>{{$agendamento->servico}}</h2>
@@ -165,7 +171,10 @@
                                     </h3>
                                 </div>
                                 <div class="description">
-                                    <h4>Horário: {{$agendamento->horario}} | Data: {{$agendamento->date}}</h4>
+                                    <h4>Horário: {{$agendamento->horario}}</h4>
+                                </div>
+                                <div class="description">
+                                    <h4>Data: {{$agendamento->date}}</h4>
                                 </div>
                             </div>
                         </div>
@@ -176,7 +185,7 @@
                     <div class="ui center aligned huge message">
                         <div class="content">
                             <div class="header">
-                                Não há histórico de agendamentos concluídos!
+                                Não há histórico de serviços concluídos!
                             </div>
                             Porquê não tenta atualizar a página?
                         </div>
@@ -189,7 +198,7 @@
 
         <div id="modal-submit" class="ui test modal front transition hidden ui responsive">
             <div class="header centered">
-                Excluir veículo?
+                Cancelar agendamento?
             </div>
 
             <div class="actions">
@@ -253,6 +262,7 @@
 
     #content {
         padding-top: 30px;
+        padding-bottom: 150px;
         /* width: 100%; */
     }
 
