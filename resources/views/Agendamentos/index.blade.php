@@ -279,6 +279,12 @@
 
     }
 
+    #concluido,
+    #solicitado,
+    #agendado {
+        min-height: 500px !important;
+    }
+
     .same-size-button {
         width: 8em;
         border-top-right-radius: 0px !important;
