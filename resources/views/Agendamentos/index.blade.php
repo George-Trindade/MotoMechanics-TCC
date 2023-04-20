@@ -24,8 +24,9 @@
     @include('layouts.header')
     <!-- Page Contents -->
     @include('components.menu')
-    <div id='content' class="ui container">
-        <div class="ui centered grid">
+
+    <div class="ui centered grid">
+        <div id='content'>
             <h2 class="ui header">Meus Agendamentos
                 <a href="{{route('agendamentos.create')}}">
                     <button class="ui button">
@@ -34,95 +35,42 @@
                     </button>
                 </a>
             </h2>
+        </div>
 
-            <div class="sixteen wide mobile ten wide tablet six wide ">
-                <div class="ui three item menu custom-tabs">
-                    <a class="item active custom-tab" data-tab="solicitado">Solicitado</a>
-                    <a class="item custom-tab" data-tab="agendado">Agendado</a>
-                    <a class="item custom-tab" data-tab="concluido">Concluído</a>
-                </div>
-                <div id="solicitado" data-tab="solicitado">
-                    <div id="cards" class="ui centered three stackable cards container">
-                        @php $cont=0; @endphp
-                        @foreach($agendamentos as $agendamento)
-                        @if($agendamento->status == 'solicitado')
-                        @php $cont=+1; @endphp
-                        <div class="ui card">
-                            <div class="ui centered content center aligned">
-                                <div class="ui card centered">
-                                    <div class="ui centered content center aligned">
-                                        <div class="header">
-                                            <h2>{{$agendamento->servico}}</h2>
-                                        </div>
-                                        <div class="meta">
-                                            <h3>
-                                                @foreach($veiculos as $veiculo)
-                                                @if($agendamento->veiculo_id == $veiculo->id)
-                                                {{$veiculo->Modelo}}
-                                                @endif
-                                                @endforeach
-                                            </h3>
-                                        </div>
-                                        <div class="description">
-                                            <h4>Horário: {{$agendamento->horario}}</h4>
-                                        </div>
-                                        <div class="description">
-                                            <h4>Data: {{$agendamento->date}}</h4>
-                                        </div>
+        <div class="sixteen wide mobile ten wide tablet six wide ">
+            <div class="ui three item menu custom-tabs">
+                <a class="item active custom-tab" data-tab="solicitado">Solicitado</a>
+                <a class="item custom-tab" data-tab="agendado">Agendado</a>
+                <a class="item custom-tab" data-tab="concluido">Concluído</a>
+            </div>
+            <div id="solicitado" data-tab="solicitado">
+                <div id="cards" class="ui centered three stackable cards container">
+                    @php $cont=0; @endphp
+                    @foreach($agendamentos as $agendamento)
+                    @if($agendamento->status == 'solicitado')
+                    @php $cont=+1; @endphp
+                    <div class="ui card">
+                        <div class="ui centered content center aligned">
+                            <div class="ui card centered">
+                                <div class="ui centered content center aligned">
+                                    <div class="header">
+                                        <h2>{{$agendamento->servico}}</h2>
                                     </div>
-                                </div>
-                                <div class="extra content centered">
-                                    <div class="ui buttons">
-                                        <form id="" action="{{route('agendamentos.destroy',$agendamento->id)}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button" class="ui button same-size-button" onclick="ConfirmSubmit()">Cancelar</button>
-                                        </form>
-                                        <div class="or" data-text="ou"></div>
-                                        <a href="{{route('agendamentos.edit',$agendamento->id)}}" class="ui teal button same-size-button">Editar</a>
+                                    <div class="meta">
+                                        <h3>
+                                            @foreach($veiculos as $veiculo)
+                                            @if($agendamento->veiculo_id == $veiculo->id)
+                                            {{$veiculo->Modelo}}
+                                            @endif
+                                            @endforeach
+                                        </h3>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
-                        @endforeach
-                        @if($cont==0)
-                        <div class="ui center aligned huge message">
-                            <div class="content">
-                                <div class="header">
-                                    Não há histórico de serviços solicitados!
-                                </div>
-                                Faça a solicitação de um novo agendamento.
-                            </div>
-                        </div>
-                        @endif
-                    </div>
-                </div>
-                <div id="agendado" data-tab="agendado">
-                    <div id="cards" class="ui centered four stackable cards container">
-                        @php $cont=0; @endphp
-                        @foreach($agendamentos as $agendamento)
-                        @if($agendamento->status == 'agendado')
-                        @php $cont=+1; @endphp
-                        <div class="ui card centered">
-                            <div class="ui centered content center aligned">
-                                <div class="header">
-                                    <h2>{{$agendamento->servico}}</h2>
-                                </div>
-                                <div class="meta">
-                                    <h3>
-                                        @foreach($veiculos as $veiculo)
-                                        @if($agendamento->veiculo_id == $veiculo->id)
-                                        {{$veiculo->Modelo}}
-                                        @endif
-                                        @endforeach
-                                    </h3>
-                                </div>
-                                <div class="description">
-                                    <h4>Horário: {{$agendamento->horario}}</h4>
-                                </div>
-                                <div class="description">
-                                    <h4>Data: {{$agendamento->date}}</h4>
+                                    <div class="description">
+                                        <h4>Horário: {{$agendamento->horario}}</h4>
+                                    </div>
+                                    <div class="description">
+                                        <h4>Data: {{$agendamento->date}}</h4>
+                                    </div>
                                 </div>
                             </div>
                             <div class="extra content centered">
@@ -132,49 +80,8 @@
                                         @method('DELETE')
                                         <button type="button" class="ui button same-size-button" onclick="ConfirmSubmit()">Cancelar</button>
                                     </form>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
-                        @endforeach
-                        @if($cont==0)
-                        <div class="ui center aligned huge message">
-                            <div class="content">
-                                <div class="header">
-                                    Não há histórico de serviços agendados!
-                                </div>
-                                Porquê não tenta atualizar a página?
-                            </div>
-                        </div>
-                        @endif
-                    </div>
-
-                </div>
-                <div id="concluido" data-tab="concluido">
-                    <div id="cards" class="ui centered four stackable cards container">
-                        @php $cont=0; @endphp
-                        @foreach($agendamentos as $agendamento)
-                        @if($agendamento->status == 'concluido')
-                        @php $cont=+1; @endphp
-                        <div class="ui card centered">
-                            <div class="ui centered content center aligned">
-                                <div class="header">
-                                    <h2>{{$agendamento->servico}}</h2>
-                                </div>
-                                <div class="meta">
-                                    <h3>
-                                        @foreach($veiculos as $veiculo)
-                                        @if($agendamento->veiculo_id == $veiculo->id)
-                                        {{$veiculo->Modelo}}
-                                        @endif
-                                        @endforeach
-                                    </h3>
-                                </div>
-                                <div class="description">
-                                    <h4>Horário: {{$agendamento->horario}}</h4>
-                                </div>
-                                <div class="description">
-                                    <h4>Data: {{$agendamento->date}}</h4>
+                                    <div class="or" data-text="ou"></div>
+                                    <a href="{{route('agendamentos.edit',$agendamento->id)}}" class="ui teal button same-size-button">Editar</a>
                                 </div>
                             </div>
                         </div>
@@ -185,14 +92,107 @@
                     <div class="ui center aligned huge message">
                         <div class="content">
                             <div class="header">
-                                Não há histórico de serviços concluídos!
+                                Não há histórico de serviços solicitados!
+                            </div>
+                            Faça a solicitação de um novo agendamento.
+                        </div>
+                    </div>
+                    @endif
+                </div>
+            </div>
+            <div id="agendado" data-tab="agendado">
+                <div id="cards" class="ui centered four stackable cards container">
+                    @php $cont=0; @endphp
+                    @foreach($agendamentos as $agendamento)
+                    @if($agendamento->status == 'agendado')
+                    @php $cont=+1; @endphp
+                    <div class="ui card centered">
+                        <div class="ui centered content center aligned">
+                            <div class="header">
+                                <h2>{{$agendamento->servico}}</h2>
+                            </div>
+                            <div class="meta">
+                                <h3>
+                                    @foreach($veiculos as $veiculo)
+                                    @if($agendamento->veiculo_id == $veiculo->id)
+                                    {{$veiculo->Modelo}}
+                                    @endif
+                                    @endforeach
+                                </h3>
+                            </div>
+                            <div class="description">
+                                <h4>Horário: {{$agendamento->horario}}</h4>
+                            </div>
+                            <div class="description">
+                                <h4>Data: {{$agendamento->date}}</h4>
+                            </div>
+                        </div>
+                        <div class="extra content centered">
+                            <div class="ui buttons">
+                                <form id="" action="{{route('agendamentos.destroy',$agendamento->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="ui button same-size-button" onclick="ConfirmSubmit()">Cancelar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                    @endforeach
+                    @if($cont==0)
+                    <div class="ui center aligned huge message">
+                        <div class="content">
+                            <div class="header">
+                                Não há histórico de serviços agendados!
                             </div>
                             Porquê não tenta atualizar a página?
                         </div>
                     </div>
                     @endif
-
                 </div>
+
+            </div>
+            <div id="concluido" data-tab="concluido">
+                <div id="cards" class="ui centered four stackable cards container">
+                    @php $cont=0; @endphp
+                    @foreach($agendamentos as $agendamento)
+                    @if($agendamento->status == 'concluido')
+                    @php $cont=+1; @endphp
+                    <div class="ui card centered">
+                        <div class="ui centered content center aligned">
+                            <div class="header">
+                                <h2>{{$agendamento->servico}}</h2>
+                            </div>
+                            <div class="meta">
+                                <h3>
+                                    @foreach($veiculos as $veiculo)
+                                    @if($agendamento->veiculo_id == $veiculo->id)
+                                    {{$veiculo->Modelo}}
+                                    @endif
+                                    @endforeach
+                                </h3>
+                            </div>
+                            <div class="description">
+                                <h4>Horário: {{$agendamento->horario}}</h4>
+                            </div>
+                            <div class="description">
+                                <h4>Data: {{$agendamento->date}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @endforeach
+                @if($cont==0)
+                <div class="ui center aligned huge message">
+                    <div class="content">
+                        <div class="header">
+                            Não há histórico de serviços concluídos!
+                        </div>
+                        Porquê não tenta atualizar a página?
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
 
@@ -211,7 +211,8 @@
                 </div>
             </div>
         </div>
-        @include('layouts.footer')
+    </div>
+    @include('layouts.footer')
 </body>
 
 </html>
@@ -296,9 +297,9 @@
     }
 
     @media only screen and (max-width: 900px) {
-        /* footer {
+        footer {
             position: inherit !important;
-        } */
+        }
 
         #content {
             padding-bottom: 30px;
@@ -306,6 +307,7 @@
 
         #cards {
             width: 390px;
+            flex-grow: 1;
         }
 
         .ui.card,
