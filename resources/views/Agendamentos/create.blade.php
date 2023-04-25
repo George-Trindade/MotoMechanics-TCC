@@ -8,17 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <!-- Site Properties -->
-    <title>Base</title>
-    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/components/footer.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/components/base_pag.css">
-    <link rel="stylesheet" href="http://192.168.1.4:8000/assets/css/loading.css" type="text/css">
+    <title>Novo Agendamento</title>
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/components/footer.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/components/base_pag.css">
+    <link rel="stylesheet" href="https://motomechanics.online/public/assets/css/loading.css" type="text/css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script src="http://192.168.1.4:8000/assets/css/fomantic/dist/semantic.min.js"></script>
-    <script src="http://192.168.1.4:8000/assets/css/fomantic/dist/semantic.js"></script>
-    <script src="http://192.168.1.4:8000/assets/js/ajaxHorario.js" type="text/javascript"></script>
+    <script src="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.min.js"></script>
+    <script src="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.js"></script>
+    <script src="https://motomechanics.online/public/assets/js/ajaxHorario.js" type="text/javascript"></script>
 </head>
 
 <body>

@@ -9,14 +9,14 @@
 
     <!-- Site Properties -->
     <title>Meus Veículos</title>
-    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/components/footer.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/fomantic/dist/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.1.4:8000/assets/css/components/base_pag.css">
-    <link rel="stylesheet" href="http://192.168.1.4:8000/assets/css/loading.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/components/footer.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/components/base_pag.css">
+    <link rel="stylesheet" href="https://motomechanics.online/public/assets/css/loading.css" type="text/css">
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-    <script src="http://192.168.1.4:8000/assets/css/fomantic/dist/semantic.min.js"></script>
-    <script src="http://192.168.1.4:8000/assets/css/fomantic/dist/semantic.js"></script>
-    <script src="http://192.168.1.4:8000/assets/js/veiculo.js" type="text/javascript"></script>
+    <script src="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.min.js"></script>
+    <script src="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.js"></script>
+    <script src="https://motomechanics.online/public/assets/js/veiculo.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -24,8 +24,21 @@
     @include('layouts.header')
     <!-- Page Contents -->
     @include('components.menu')
+    <div class="ui centered grid">
+        <div id='content'>
+            <h2 class="ui header">Meus Veículos
+                <a href="{{route('veiculos.create')}}">
+                    <button class="ui button">
+                        Novo
+                        <i class="plus icon"></i>
+                    </button>
+                </a>
+            </h2>
+        </div>
+    </div>
 
     <div id="cards" class="ui centered four stackable cards container">
+
         @foreach ($veiculos as $veiculo)
         <div class="ui card">
             <div class="image dimmable">
@@ -36,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                <img src="http://192.168.1.4:8000/storage/veiculos/{{$veiculo->fotoveiculo}}">
+                <img src="https://motomechanics.online/public/storage/veiculos/{{$veiculo->fotoveiculo}}">
             </div>
             <div class="content">
                 <div class="header">
@@ -103,6 +116,15 @@
     });
 </script>
 <style>
+    .ui.button:hover {
+        box-shadow: none;
+        outline: none;
+    }
+
+    #content {
+        padding-top: 30px;
+    }
+
     #modal-submit.ui.modal {
         width: auto !important;
     }
