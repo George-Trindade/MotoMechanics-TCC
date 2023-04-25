@@ -6,8 +6,6 @@ use App\Http\Controllers\HorariosController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VeiculosController;
 
-Route::get('/teste', [VeiculosController::class, 'teste']);
-Route::get('/base', [VeiculosController::class, 'base']);
 
 Route::get('/', function () {
     return view('auth.login');
@@ -41,7 +39,7 @@ Route::delete('/admin/agendamentos/delete/{id}', [AdminController::class, 'destr
 Route::get('/admin/agendamentos/get/ajaxsolicitados', [AdminController::class, 'ajaxAgendamento'])->name('admin.ajaxSolicitados')->middleware('admin');
 
 //Veiculos
-Route::get('/veiculo/', [VeiculosController::class, 'index'])->name('veiculos.index');;
+Route::get('/veiculo/', [VeiculosController::class, 'index'])->name('veiculos.index');
 Route::get('/veiculo/novo', [VeiculosController::class, 'create'])->name('veiculos.create');
 Route::post('/veiculo/novo', [VeiculosController::class, 'store'])->name('veiculos.store');
 Route::get('/veiculos/alterar/{id}', [VeiculosController::class, 'edit'])->name('veiculos.edit')->middleware('auth');

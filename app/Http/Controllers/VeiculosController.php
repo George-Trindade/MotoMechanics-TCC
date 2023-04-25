@@ -10,16 +10,6 @@ use Illuminate\Support\Facades\Redirect;
 
 class VeiculosController extends Controller
 {
-    public function teste()
-    {
-        return view('teste');
-    }
-
-    public function base()
-    {
-        return view('base');
-    }
-
 
     public function create()
     {
@@ -63,7 +53,7 @@ class VeiculosController extends Controller
         if ($Contveiculos == 0) {
             return redirect()->route('veiculos.create');
         } else {
-            return view('veiculos.index', compact('veiculos'));
+            return view('Veiculos.index', compact('veiculos'));
         }
     }
 
