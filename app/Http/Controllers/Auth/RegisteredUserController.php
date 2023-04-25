@@ -51,6 +51,11 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        if (Auth::check() && Auth::user()->admin == 1) {
+            return view('Admin.dashboard');
+        } else {
+            // return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->route('agendamentos.index');
+        }
     }
 }
