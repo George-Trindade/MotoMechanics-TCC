@@ -10,10 +10,10 @@
             <!-- <a class="item" style="align-self: center;">Careers</a> -->
         </div>
         <div id="logo" class="center item">
-            <img id="img_logo" src="http://192.168.1.4:8000/assets/img/logodef.png">
+            <img id="img_logo" src="https://motomechanics.online/public/assets/img/logodef.png">
         </div>
         <a id="logo-nome" class="center item" style="display:none">
-            <img id="logo_mobile" src="http://192.168.1.4:8000/assets/img/logodef.png">
+            <img id="logo_mobile" src="https://motomechanics.online/public/assets/img/logodef.png">
         </a>
         <div id="span_user" class="right item" style="align-self: center !important; margin-left:0!important">
             <span class="ui avatar image" style="width:3em !important;height: 3em!important;">
