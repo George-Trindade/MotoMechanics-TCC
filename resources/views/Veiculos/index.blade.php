@@ -49,7 +49,8 @@
                         </div>
                     </div>
                 </div>
-                <img src="https://motomechanics.online/public/storage/veiculos/{{$veiculo->fotoveiculo}}">
+                <!-- <img src="https://motomechanics.online/public/storage/veiculos/{{$veiculo->fotoveiculo}}"> -->
+                <img src="{{Storage::url('public/veiculos/' . $veiculo->fotoveiculo)}}">
             </div>
             <div class="content">
                 <div class="header">
