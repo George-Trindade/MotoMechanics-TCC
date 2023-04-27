@@ -32,7 +32,9 @@ class VeiculosController extends Controller
         if ($request->hasFile('fotoveiculo')) {
             $image = $request->file('fotoveiculo');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('public/veiculos', $filename);
+            // $path = $image->storeAs('public/veiculos', $filename);
+            $destinationPath = public_path('assets/veiculos');
+            $image->move($destinationPath, $filename);
             $veiculo->fotoveiculo = $filename;
         }
 
