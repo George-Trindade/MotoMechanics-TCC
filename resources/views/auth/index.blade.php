@@ -41,7 +41,7 @@
             <div class="ui centered stackable grid center" style="padding-top: 15px;">
                 <div class="four wide column" style="width: auto!important;">
                     <div class="ui image">
-                        <img style="height: 175px;" src="{{ asset('assets/users/' . Auth::user()->avatar) }}" alt="Foto do usuário">
+                        <img style="height: 175px;" src="{{ asset('public/assets/users/' . Auth::user()->avatar) }}" alt="Foto do usuário">
                     </div>
                 </div>
                 <div class="twelve wide computer only column">
