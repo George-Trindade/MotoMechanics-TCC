@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <!-- Site Properties -->
-    <title>Registrar-MotoMechanics</title>
+    <title>Atualizar cadastro-MotoMechanics</title>
     <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/components/footer.css">
     <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/reset.css">
     <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/components/site.css">
@@ -37,23 +37,23 @@
 <body>
     @include('layouts.header_login')
     <div id="div_geral">
-        <h1 class="ui center aligned header">Registre-se</h1>
-        <h4 class="ui center aligned header"> Para agendar serviços e acompanhar seus atendimentos.</h4>
+        <h1 class="ui center aligned header">Atualizar o cadastro</h1>
         <div id="div_center" class=" ui centered grid container middle aligned">
-            <form id="form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+            <form id="form" method="POST" action="{{route('user.update', Auth::user()->id)}}" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div id="div_form" class="ui stackable two column divided grid container">
                     <div class="row">
                         <div class="column">
                             <div class="ui segment">
                                 <h3>Nome</h3>
-                                <input id="name" type="text" name="name" class="ui segment item_form">
+                                <input id="name" type="text" name="name" class="ui segment item_form" value="{{Auth::user()->name}}">
                             </div>
                         </div>
-                        <div class="column">
+                        <div class=" column">
                             <div class="ui segment">
                                 <h3>Email</h3>
-                                <input id="email" type="email" name="email" class="ui segment item_form">
+                                <input readonly id="email" type="email" name="email" class="ui segment item_form" value="{{Auth::user()->email}}">
                             </div>
                         </div>
                     </div>
@@ -61,13 +61,13 @@
                         <div class="column">
                             <div class="ui segment">
                                 <h3>Telefone</h3>
-                                <input id="phone" type="text" name="phone" class="ui segment item_form">
+                                <input id="phone" type="text" name="phone" class="ui segment item_form" value="{{Auth::user()->phone}}">
                             </div>
                         </div>
                         <div class="column">
                             <div class="ui segment">
                                 <h3>Endereço</h3>
-                                <input id="address" type="text" name="address" class="ui segment item_form">
+                                <input id="address" type="text" name="address" class="ui segment item_form" value="{{Auth::user()->address}}">
                             </div>
                         </div>
                     </div>
@@ -75,13 +75,13 @@
                         <div class="column">
                             <div class="ui segment">
                                 <h3>Senha</h3>
-                                <input id="password" type="password" name="password" class="ui segment item_form">
+                                <input id="password" type="password" name="password" class="ui segment item_form" placeholder="Se não deseja alterar,deixe em branco">
                             </div>
                         </div>
                         <div class="column">
                             <div class="ui segment">
                                 <h3>Confirme a senha</h3>
-                                <input id="password_confirmation" type="password" name="password_confirmation" class="ui segment item_form">
+                                <input id="password_confirmation" type="password" name="password_confirmation" class="ui segment item_form" placeholder="Se não deseja alterar, deixe em branco">
                             </div>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                     </div>
                     <div class="ui vertical max-widht center aligned segment">
                         <div class="ui text container max-widht">
-                            <div id="btn_registrar" class="ui large submit button">Registrar <i class="right arrow icon"></i></div>
+                            <div id="btn_registrar" class="ui large submit button">Atualizar <i class="right arrow icon"></i></div>
                         </div>
                     </div>
                 </div>

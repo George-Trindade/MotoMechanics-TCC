@@ -135,6 +135,7 @@ body {
     #logo_mobile {
         /* width: 120px; */
         /* padding-top: 10px; */
+        margin-right: 60px;
         width: 180px;
         height: 35px;
     }

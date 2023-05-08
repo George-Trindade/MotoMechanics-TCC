@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Redirect;
 class VeiculosController extends Controller
 {
 
+
+
+    public function base()
+    {
+        return view('base');
+    }
+
     public function create()
     {
         return view('Veiculos.create');

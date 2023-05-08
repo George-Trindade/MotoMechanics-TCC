@@ -17,10 +17,20 @@
 
 <!-- Sidebar Menu -->
 <div class="ui vertical inverted sidebar menu">
-    <a class="active item">Agendamentos</a>
-    <a class="item">Orçamentos</a>
-    <a class="item">Meus veículos</a>
-    <!-- <a class="item">Careers</a>
-    <a class="item">Login</a>
-    <a class="item">Signup</a> -->
+    <div class="item">
+        <img class="ui avatar image" src="http://motomechanics.online/public/assets/img/tiringa.jpg">
+        <span class="ui text medium">{{ Auth::user()->name }}</span>
+    </div>
+    <a class="item" href="{{ route('agendamentos.index') }}">Agendamentos <i class="calendar outline icon"></i> </a>
+    <a class="item">Orçamentos <i class="donate icon"></i></a>
+    <a class="item" href="{{ route('veiculos.index') }}">Meus veículos <i class="motorcycle icon"></i></a>
+    <a class="item">Meus dados <i class="user alternate icon"></i></a>
+    <a class="item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        Sair
+        <i class="sign out alternate icon"></i>
+    </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+
 </div>

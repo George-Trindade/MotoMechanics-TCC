@@ -5,7 +5,10 @@ use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\HorariosController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VeiculosController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
+Route::get('/teste', [VeiculosController::class, 'teste']);
+Route::get('/base', [VeiculosController::class, 'base']);
 
 Route::get('/', function () {
     return view('auth.login');
@@ -16,6 +19,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+
+//User
+Route::get('/meusdados/', [RegisteredUserController::class, 'index'])->name('usuario.index')->middleware('auth');
+Route::get('/meusdados/edit/{id}', [RegisteredUserController::class, 'edit'])->name('user.edit')->middleware('auth');
+Route::put('/meusdados/edit/{id}', [RegisteredUserController::class, 'update'])->name('user.update')->middleware('auth');
+
+
 
 //Agendamentos
 Route::get('/agendamentos/', [AgendamentosController::class, 'index'])->name('agendamentos.index')->middleware('auth');

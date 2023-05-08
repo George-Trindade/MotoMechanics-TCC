@@ -10,27 +10,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rule;
+
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     *
-     * @return \Illuminate\View\View
-     */
+    public function index()
+    {
+        return view('Auth.index');
+    }
     public function create()
     {
         return view('auth.register');
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -46,8 +40,17 @@ class RegisteredUserController extends Controller
             'address' => $request->address,
             'password' => Hash::make($request->password),
         ]);
-
         event(new Registered($user));
+
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            $destinationPath = public_path('assets/users');
+            $avatar->move($destinationPath, $filename);
+            $user->avatar = $filename;
+        }
+
+        $user->save();
 
         Auth::login($user);
 
@@ -57,5 +60,37 @@ class RegisteredUserController extends Controller
             // return redirect()->intended(RouteServiceProvider::HOME);
             return redirect()->route('agendamentos.index');
         }
+    }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('auth.update', ['user' => $user]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(Auth::user()->id)],
+            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
+        ]);
+        $user = User::find($id);
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            $destinationPath = public_path('assets/users');
+            $avatar->move($destinationPath, $filename);
+            $user->avatar = $filename;
+        }
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->update();
+
+        return redirect()->route('usuario.index', $user)->with('success', 'Usuário atualizado com sucesso!');
     }
 }
