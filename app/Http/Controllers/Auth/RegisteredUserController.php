@@ -18,7 +18,7 @@ class RegisteredUserController extends Controller
 {
     public function index()
     {
-        return view('Auth.index');
+        return view('auth.index');
     }
     public function create()
     {
