@@ -75,13 +75,13 @@
                         <div class="column">
                             <div class="ui segment">
                                 <h3>Senha</h3>
-                                <input id="password" type="password" name="password" class="ui segment item_form" placeholder="Se não deseja alterar,deixe em branco">
+                                <input id="password" type="password" name="password" class="ui segment item_form" autocomplete="off" placeholder="Se não deseja alterar,deixe em branco">
                             </div>
                         </div>
                         <div class="column">
                             <div class="ui segment">
                                 <h3>Confirme a senha</h3>
-                                <input id="password_confirmation" type="password" name="password_confirmation" class="ui segment item_form" placeholder="Se não deseja alterar, deixe em branco">
+                                <input id="password_confirmation" type="password" name="password_confirmation" class="ui segment item_form" autocomplete="off" placeholder="Se não deseja alterar, deixe em branco">
                             </div>
                         </div>
                     </div>
