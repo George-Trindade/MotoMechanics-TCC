@@ -5,10 +5,12 @@ use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\HorariosController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VeiculosController;
+use App\Http\Controllers\OrcamentoController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/teste', [VeiculosController::class, 'teste']);
 Route::get('/base', [VeiculosController::class, 'base']);
+
 
 Route::get('/', function () {
     return view('auth.login');
@@ -55,3 +57,10 @@ Route::post('/veiculo/novo', [VeiculosController::class, 'store'])->name('veicul
 Route::get('/veiculos/alterar/{id}', [VeiculosController::class, 'edit'])->name('veiculos.edit')->middleware('auth');
 Route::put('/veiculos/alterar/{id}', [VeiculosController::class, 'update'])->name('veiculos.update')->middleware('auth');
 Route::delete('/veiculos/{id}', [VeiculosController::class, 'destroy'])->name('veiculos.destroy')->middleware('auth');
+
+//Orçamentos
+Route::get('/orcamento', [OrcamentoController::class, 'index'])->name('orcamentos.index')->middleware('auth');
+Route::post('/orcamentos/novo', [OrcamentoController::class, 'store'])->name('orcamentos.store')->middleware('auth');
+Route::get('/orcamentos/{id}', [OrcamentoController::class, 'show'])->name('orcamento.show');
+Route::get('/orcamento/adicionar', [OrcamentoController::class, 'create'])->name('orcamento.create');
+// Route::get('/orcamentos', [OrcamentoController::class, 'index'])->name('orcamento.index');

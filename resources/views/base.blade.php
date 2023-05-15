@@ -44,9 +44,24 @@
     <!-- Page Contents -->
 
     @include('components.menu')
-    <div style="min-height: 250px;">
+    <br><br><br><br><br>
+    <form action="{{route('orcamentos.store')}}" method="POST" enctype="multipart/form-data">
+        @csrf
 
-    </div>
+        <label for="servico">Serviço:</label>
+        <input type="text" id="servico" name="servico" required>
+        <br>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" required></textarea>
+        <br>
+
+        <label for="fotos">Fotos:</label>
+        <input type="file" id="fotos" name="fotos[]" multiple accept="image/*" required>
+        <br>
+
+        <input type="submit" value="Enviar Orçamento">
+    </form>
 
     @include('layouts.footer')
 </body>

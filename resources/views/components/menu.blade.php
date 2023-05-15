@@ -13,7 +13,7 @@ $primeiroNome = explode(' ', $nomeCompleto)[0];
                 <i class="sidebar large icon"></i>
             </a>
             <a id="agendamentos" class="active item" href="{{route('agendamentos.index')}}" style="align-self: center;">Agendamentos</a>
-            <a id="orçamentos" class="item" style="align-self: center;">Orçamentos</a>
+            <a id="orçamentos" class="item" href="{{route('orcamentos.index')}}" style=" align-self: center;">Orçamentos</a>
             <a id="veiculos" class="item" href="{{route('veiculos.index')}}" style="align-self: center;">Meus veículos</a>
             <!-- <a class="item" style="align-self: center;">Careers</a> -->
         </div>
