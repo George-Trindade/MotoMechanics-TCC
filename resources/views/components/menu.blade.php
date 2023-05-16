@@ -25,7 +25,7 @@ $primeiroNome = explode(' ', $nomeCompleto)[0];
         </a>
         <div class="" style=" display: flex;align-items: center; margin-bottom: 10px;padding: 0px;">
             <div id="drop-user" class="ui dropdown item">
-                <img class="ui avatar image" src="{{ asset('public/assets/users/' . Auth::user()->avatar) }}">
+                <img class="ui avatar image" src="'https://motomechanics.online/public/assets/users/' . {{Auth::user()->avatar) }}">
                 <span class="ui text large"><strong>{{ $primeiroNome }}</strong></span>
                 <i class="dropdown icon"></i>
                 <div class="menu">
