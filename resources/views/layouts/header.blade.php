@@ -22,7 +22,7 @@
         <span class="ui text medium">{{ Auth::user()->name }}</span>
     </div>
     <a class="item" href="{{ route('agendamentos.index') }}">Agendamentos <i class="calendar outline icon"></i> </a>
-    <a class="item">Orçamentos <i class="donate icon"></i></a>
+    <a class="item" href="{{ route('orcamentos.index') }}">Orçamentos <i class="donate icon"></i></a>
     <a class="item" href="{{ route('veiculos.index') }}">Meus veículos <i class="motorcycle icon"></i></a>
     <a class="item">Meus dados <i class="user alternate icon"></i></a>
     <a class="item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
