@@ -164,7 +164,7 @@
         var owl = $('.owl-carousel');
         owl.owlCarousel({
             items: 1,
-            loop: true,
+            loop: false,
             nav: true,
             dots: false
         });
