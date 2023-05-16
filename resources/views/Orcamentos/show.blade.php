@@ -47,8 +47,8 @@
         <div class="owl-carousel">
             @foreach($fotosProblema as $foto)
             <div class="item">
-                <a class="fancybox" href="{{ asset('assets/orcamentos/fotos/' . $foto->nome) }}" data-fancybox="gallery">
-                    <img class="ui rounded image" src="{{ asset('assets/orcamentos/fotos/' . $foto->nome) }}" alt="{{ $foto->nome }}">
+                <a class="fancybox" href="https://motomechanics.online/public/assets/orcamentos/fotos/{{$foto->nome}}" data-fancybox="gallery">
+                    <img class="ui rounded image" src="https://motomechanics.online/public/assets/orcamentos/fotos/{{$foto->nome}}" alt="{{ $foto->nome }}">
                 </a>
             </div>
             @endforeach
