@@ -18,7 +18,7 @@
 <!-- Sidebar Menu -->
 <div class="ui vertical inverted sidebar menu">
     <div class="item">
-        <img class="ui avatar image" src="http://motomechanics.online/public/assets/img/tiringa.jpg">
+        <img class="ui avatar image" src="{{ asset('public/assets/users/' . Auth::user()->avatar) }}">
         <span class="ui text medium">{{ Auth::user()->name }}</span>
     </div>
     <a class="item" href="{{ route('agendamentos.index') }}">Agendamentos <i class="calendar outline icon"></i> </a>
