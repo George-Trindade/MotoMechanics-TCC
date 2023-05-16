@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div class="container" style="padding-top: 15px;">
+    <div class="container context" style="padding-top: 15px;">
         <h3 class="ui horizontal divider header">
             <i class="images icon"></i>
             Fotos Anexadas:
@@ -119,6 +119,11 @@
         max-width: 600px;
     }
 
+    .context {
+        min-height: 500px !important;
+        padding-bottom: 30px;
+    }
+
     .item,
     .owl-carousel,
     .fancybox>img {
@@ -157,7 +162,7 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        padding-bottom: 30px;
+
     }
 
     p {
