@@ -64,10 +64,17 @@
             <i class="cogs icon"></i>
             {{ $orcamento->servico }}
         </h3>
+        @if($orcamento->valor_total=='0.00')
         <h3>
-            <i class="donate green icon"></i>
-            Valor Total: R$ <div class="ui green text">{{ $orcamento->valor_total }}</div>
+            <i class="donate green icon"></i>Valor Total:
+            <span class="ui error text">Em análise</span>
         </h3>
+        @else
+        <h3>
+            <i class="donate green icon"></i>Valor Total:
+            <span class="ui success text">R$ {{$orcamento->valor_total}}</span>
+        </h3>
+        @endif
         <h3>
             <i class="motorcycle icon"></i>
             @foreach($veiculos as $veiculo)
