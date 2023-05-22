@@ -26,32 +26,32 @@
 
     <div class="card">
         <div class="card-body">
-             <table id="exemplo" class="display " style="width:100%">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Telefone</th>
-                <th>Perfil</th>
-                <th>E-mail</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($users as $user)
-            <tr>
-                <td>{{$user->id}}</td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->phone}}</td>
-                @if ($user->admin == '1')
-                <td>Administrador</td>
-                @else
-                <td>Cliente</td>
-                @endif
-                <td>{{$user->email}}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+            <table id="exemplo" class="display " style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Perfil</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($users as $user)
+                    <tr>
+                        <td>{{$user->id}}</td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->phone}}</td>
+                        @if ($user->admin == '1')
+                        <td>Administrador</td>
+                        @else
+                        <td>Cliente</td>
+                        @endif
+                        <td>{{$user->email}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -71,4 +71,14 @@
 @section('js')
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#exemplo').DataTable({
+            destroy: true,
+            language: {
+                "url": "https://motomechanics.online/public/assets/js/pt-BR.json"
+            }
+        });
+    });
+</script>
 @stop

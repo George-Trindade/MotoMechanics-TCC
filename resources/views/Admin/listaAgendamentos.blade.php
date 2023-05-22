@@ -264,4 +264,24 @@
 @section('js')
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $.extend(true, $.fn.dataTable.defaults, {
+            language: {
+                "url": "https://motomechanics.online/public/assets/js/pt-BR.json"
+            }
+        });
+    });
+    $('#table-concluido').DataTable({
+        language: {
+            "url": "https://motomechanics.online/public/assets/js/pt-BR.json"
+        }
+    });
+    $('#table-agendado').DataTable({
+        language: {
+            "url": "https://motomechanics.online/public/assets/js/pt-BR.json"
+        }
+    });
+</script>
 @stop

@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
         if (Auth::check() && Auth::user()->admin == 1) {
-            return view('Admin.dashboard');
+            return redirect()->route('admin.listaAgendamentos');
         } else {
             // return redirect()->intended(RouteServiceProvider::HOME);
             return redirect()->route('agendamentos.index');

@@ -31,6 +31,7 @@ class OrcamentoController extends Controller
         $request->validate([
             'servico' => 'required',
             'descricao' => 'required',
+            'veiculo_id' => 'required',
             'fotos.*' => 'image|mimes:jpeg,png,jpg|max:2048', // Validação das imagens (opcional)
         ]);
         if ($request->hasFile('fotos')) {
@@ -48,7 +49,9 @@ class OrcamentoController extends Controller
         $orcamento = new Orcamento();
         $orcamento->servico = $request->input('servico');
         $orcamento->valor_total = 0; // Defina o valor total de acordo com a lógica desejada
-        $orcamento->fotos_problema = json_encode($fotosProblema); // Converte as fotos em formato JSON
+        if ($request->hasFile('fotos')) {
+            $orcamento->fotos_problema = json_encode($fotosProblema); // Converte as fotos em formato JSON
+        }
         $orcamento->descricao_problema = $request->input('descricao');
         $orcamento->veiculo_id = $request->input('veiculo_id'); // Defina o ID do veículo apropriado
         $orcamento->user_id = auth()->user()->id; // Obtém o ID do usuário autenticado
@@ -66,9 +69,12 @@ class OrcamentoController extends Controller
             return redirect()->back()->with('error', 'Você não tem permissão para acessar este orçamento.');
         }
 
-        // Transforma as fotos do problema em um array de objetos
-        $fotosProblema = json_decode($orcamento->fotos_problema);
-
+        if ($orcamento->fotos_problema == null) {
+            $fotosProblema = [];
+        } else {
+            // Transforma as fotos do problema em um array de objetos
+            $fotosProblema = json_decode($orcamento->fotos_problema);
+        }
         return view('Orcamentos.show', compact('orcamento', 'fotosProblema', 'veiculos'));
     }
 
@@ -80,8 +86,23 @@ class OrcamentoController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        // Validação dos campos do formulário
+        $request->validate([
+            'valor_total' => 'required|numeric',
+        ]);
+
+        // Obtém o orçamento existente pelo ID
+        $orcamento = Orcamento::findOrFail($id);
+
+        // Atualiza o valor total do orçamento
+        $orcamento->valor_total = $request->input('valor_total');
+
+        // Salva as alterações no banco de dados
+        $orcamento->save();
+
+        return redirect()->route('admin.listaOrcamentos');
     }
+
 
 
     public function destroy($id)

@@ -51,7 +51,7 @@
         <div class="ten wide column">
             <form id="form-veiculo" class="ui form" action="{{route('orcamentos.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                <input type="hidden" name="user_id" value="{{ Auth::id() }}" required>
                 <div class="field">
                     <label class="label">Serviço</label>
                     <select class="ui search fluid dropdown border" id="servico" name="servico" value="{{old('Servico')}}">
@@ -62,9 +62,13 @@
                     <label class="label">Veículo</label>
                     <select class="ui fluid dropdown border" name="veiculo_id" id="veiculo_id">
                         <option value="">Selecione um veículo</option>
+                        @if(count($veiculos) > 0)
                         @foreach($veiculos as $veiculo)
                         <option value="{{$veiculo->id}}">{{$veiculo->Modelo}}</option>
                         @endforeach
+                        @else
+
+                        @endif
                     </select>
                 </div>
                 <div class="field">

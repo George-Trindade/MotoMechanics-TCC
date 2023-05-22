@@ -4,9 +4,9 @@
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">
                 <h4 class="ui inverted header">Entre em contato</h4>
                 <div class="ui inverted list">
-                    <div class="item"><i class="map marker alternate icon"></i>Endereço: Rua Exemplo, 123 - Bairro, Cidade - Estado</div>
-                    <div class="item"><i class="phone icon"></i>Telefone: (XX) XXXX-XXXX</div>
-                    <div class="item"><i class="envelope icon"></i>E-mail: contato@exemplo.com.br</div>
+                    <div class="item"><i class="map marker alternate icon"></i>Rua Marabá, Nº 588- Centro, Paraíso do Tocantins </div>
+                    <div class="item"><i class="phone icon"></i>(63) 3692-1010</div>
+                    <div class="item"><i class="envelope icon"></i>contato@motomechanis.online</div>
                 </div>
             </div>
             <div class="sixteen wide mobile four wide computer column">
@@ -28,3 +28,9 @@
         </div>
     </div>
 </footer>
+
+<style>
+    .computer.column {
+        max-width: 450px !important;
+    }
+</style>
