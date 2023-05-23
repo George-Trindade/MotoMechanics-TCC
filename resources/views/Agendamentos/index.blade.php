@@ -16,7 +16,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.min.js"></script>
     <script src="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.js"></script>
-    <script src="https://motomechanics.online/public/assets/js/veiculo.js" type="text/javascript"></script>
+    <script src="http://192.168.1.4:8000/assets/js/agendamento.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -75,10 +75,10 @@
                             </div>
                             <div class="extra content centered">
                                 <div class="ui buttons">
-                                    <form id="" action="{{route('agendamentos.destroy',$agendamento->id)}}" method="POST">
+                                    <form id="form-delete" action="{{route('agendamentos.destroy',$agendamento->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button" class="ui button same-size-button" onclick="ConfirmSubmit()">Cancelar</button>
+                                        <button type="button" class="ui button same-size-button" onclick="ConfirmSubmit('form-delete')">Cancelar</button>
                                     </form>
                                     <div class="or" data-text="ou"></div>
                                     <a href="{{route('agendamentos.edit',$agendamento->id)}}" class="ui teal button same-size-button">Editar</a>
@@ -129,10 +129,10 @@
                         </div>
                         <div class="extra content centered">
                             <div class="ui buttons">
-                                <form id="" action="{{route('agendamentos.destroy',$agendamento->id)}}" method="POST">
+                                <form id="form-delete-agendado" action="{{route('agendamentos.destroy',$agendamento->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="ui button same-size-button" onclick="ConfirmSubmit()">Cancelar</button>
+                                    <button type="button" class="ui button same-size-button" onclick="ConfirmSubmit('form-delete-agendado')">Cancelar</button>
                                 </form>
                             </div>
                         </div>
@@ -207,7 +207,6 @@
                 </div>
                 <div class="ui positive right labeled icon button">
                     Sim
-                    <i class="checkmark icon"></i>
                 </div>
             </div>
         </div>

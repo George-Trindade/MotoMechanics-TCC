@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Veiculo;
 use App\Models\Orcamento;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class OrcamentoController extends Controller
 {
@@ -80,7 +81,6 @@ class OrcamentoController extends Controller
 
     public function edit($id)
     {
-        //
     }
 
 
@@ -107,6 +107,8 @@ class OrcamentoController extends Controller
 
     public function destroy($id)
     {
-        //
+        $orcamentos = Orcamento::find($id);
+        $orcamentos->delete();
+        return Redirect::route('orcamentos.index')->with('Deletado com sucesso!');
     }
 }

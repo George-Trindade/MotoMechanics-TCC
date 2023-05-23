@@ -55,9 +55,9 @@ Route::get('/admin/orcamentos/ver/{id}', [AdminController::class, 'showOrcamento
 
 
 //Veiculos
-Route::get('/veiculo/', [VeiculosController::class, 'index'])->name('veiculos.index');
-Route::get('/veiculo/novo', [VeiculosController::class, 'create'])->name('veiculos.create');
-Route::post('/veiculo/novo', [VeiculosController::class, 'store'])->name('veiculos.store');
+Route::get('/veiculo/', [VeiculosController::class, 'index'])->name('veiculos.index')->middleware('auth');;
+Route::get('/veiculo/novo', [VeiculosController::class, 'create'])->name('veiculos.create')->middleware('auth');;
+Route::post('/veiculo/novo', [VeiculosController::class, 'store'])->name('veiculos.store')->middleware('auth');;
 Route::get('/veiculos/alterar/{id}', [VeiculosController::class, 'edit'])->name('veiculos.edit')->middleware('auth');
 Route::put('/veiculos/alterar/{id}', [VeiculosController::class, 'update'])->name('veiculos.update')->middleware('auth');
 Route::delete('/veiculos/{id}', [VeiculosController::class, 'destroy'])->name('veiculos.destroy')->middleware('auth');
@@ -65,8 +65,9 @@ Route::delete('/veiculos/{id}', [VeiculosController::class, 'destroy'])->name('v
 //Orçamentos
 Route::get('/orcamento', [OrcamentoController::class, 'index'])->name('orcamentos.index')->middleware('auth');
 Route::post('/orcamentos/novo', [OrcamentoController::class, 'store'])->name('orcamentos.store')->middleware('auth');
-Route::get('/orcamentos/{id}', [OrcamentoController::class, 'show'])->name('orcamento.show');
-Route::get('/orcamento/adicionar', [OrcamentoController::class, 'create'])->name('orcamento.create');
-Route::put('/orcamentos/{id}', [OrcamentoController::class, 'update'])->name('orcamentos.update');
+Route::get('/orcamentos/{id}', [OrcamentoController::class, 'show'])->name('orcamento.show')->middleware('auth');
+Route::get('/orcamento/adicionar', [OrcamentoController::class, 'create'])->name('orcamento.create')->middleware('auth');
+Route::put('/orcamentos/{id}', [OrcamentoController::class, 'update'])->name('orcamentos.update')->middleware('auth');
+Route::delete('/orcamentos/delete/{id}', [OrcamentoController::class, 'destroy'])->name('orcamento.destroy')->middleware('auth');
 
 // Route::get('/orcamentos', [OrcamentoController::class, 'index'])->name('orcamento.index');

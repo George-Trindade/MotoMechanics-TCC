@@ -16,7 +16,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.min.js"></script>
     <script src="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.js"></script>
-    <script src="https://motomechanics.online/public/assets/js/veiculo.js" type="text/javascript"></script>
+    <script src="http://192.168.1.4:8000/assets/js/veiculo.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -74,11 +74,11 @@
                             </div>
                             <div class="extra content centered">
                                 <div class="ui buttons">
-                                    <form id="" action="" method="POST">
+                                    <form id="form-orcamento" action="{{route('orcamento.destroy',$orcamento->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button" class="ui button same-size-button" onclick="ConfirmSubmit()">Cancelar</button>
                                     </form>
+                                    <button type="button" class="ui button same-size-button" onclick="ConfirmSubmitOrcamento()">Cancelar</button>
                                     <div class="or" data-text="ou"></div>
                                     <a href="{{ route('orcamento.show', $orcamento->id) }}" class="ui teal button same-size-button">Visualizar</a>
                                 </div>
@@ -155,7 +155,7 @@
 
         <div id="modal-submit" class="ui test modal front transition hidden ui responsive">
             <div class="header centered">
-                Cancelar agendamento?
+                Cancelar orçamento?
             </div>
 
             <div class="actions">
@@ -164,7 +164,6 @@
                 </div>
                 <div class="ui positive right labeled icon button">
                     Sim
-                    <i class="checkmark icon"></i>
                 </div>
             </div>
         </div>
@@ -210,7 +209,24 @@
 
         // create sidebar and attach to menu open
         $('.ui.sidebar').sidebar('attach events', '.toc.item');
+
+
     });
+
+    function ConfirmSubmitOrcamento() {
+        $("#modal-submit")
+            .modal({
+                closable: false,
+                onDeny: function() {
+                    return true;
+                },
+                onApprove: function() {
+                    var form = document.getElementById("form-orcamento");
+                    form.submit();
+                },
+            })
+            .modal("show");
+    }
 </script>
 <style>
     .ui.menu .active.item {
