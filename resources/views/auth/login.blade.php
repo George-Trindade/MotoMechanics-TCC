@@ -30,7 +30,9 @@
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="https://motomechanics.online/public/assets/css/fomantic/dist/components/form.js"></script>
     <script src="https://motomechanics.online/public/assets/css/fomantic/dist/components/transition.js"></script>
-
+    <script src="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.min.js"></script>
+    <script src="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.min.css">
     <style type="text/css">
         * {
             margin: 0;
@@ -147,6 +149,26 @@
 
 <body>
     @include('layouts.header_login')
+
+    @if ($errors->any())
+    @foreach ($errors->all() as $error)
+    <div class="ui black toast center aligned toast-veiculo">
+        <div class="content">
+            <h3 class="ui header">
+                <i class="small icons">
+                    <i class="exclamation triangle icon" style="visibility: visible;"></i>
+                </i>
+                Atenção
+            </h3>
+            <li>{{ $error }}</li>
+        </div>
+    </div>
+    @endforeach
+    <script>
+        $('.toast-veiculo').toast();
+    </script>
+    @endif
+
     <div id="div_geral" class="ui middle aligned center aligned grid">
         <div id="paddingtop" class=" column">
             <h1>Faça seu Login</h1>
@@ -168,8 +190,6 @@
                     </div>
                     <div id="btn_login" class="ui fluid large submit button">Entrar</div>
                 </div>
-
-                <div class="ui error message"></div>
 
             </form>
 
