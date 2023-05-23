@@ -16,7 +16,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.min.js"></script>
     <script src="https://motomechanics.online/public/assets/css/fomantic/dist/semantic.js"></script>
-    <script src="http://192.168.1.4:8000/assets/js/veiculo.js" type="text/javascript"></script>
+    <script src="https://motomechanics.online/public/assets/js/veiculo.js" type="text/javascript"></script>
 </head>
 
 <body>
