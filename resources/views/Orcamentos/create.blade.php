@@ -67,10 +67,17 @@
                         <option value="{{$veiculo->id}}">{{$veiculo->Modelo}}</option>
                         @endforeach
                         @else
-
                         @endif
                     </select>
                 </div>
+                @if(count($veiculos) == 0)
+                <div class="ui message">
+                    <div class="header">Atenção</div>
+                    <span>Você não possui nenhum veículo cadastrado.
+                        <a href="https://motomechanics.online/public/veiculo/novo">Cadastrar</a>
+                    </span>
+                </div>
+                @endif
                 <div class="field">
                     <label class="label" for="servico">Decrição:</label>
                     <textarea class="ui input fluid" type="text" id="descricao" name="descricao" placeholder="" required></textarea>
@@ -179,6 +186,10 @@
 </script>
 
 <style>
+    footer {
+        position: inherit !important;
+    }
+
     @media only screen and (min-width: 992px) {
         body {
             min-height: 856px !important;

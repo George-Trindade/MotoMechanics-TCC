@@ -28,7 +28,7 @@
     <!-- Page Contents -->
 
     @include('components.menu')
-    <div class="ui container centered grid">
+    <div id='conteudo' class="ui container centered grid">
         <h2 class="center aligned">Faça um agendamento para o serviço a ser realizado</h2>
         <div class="ten wide column">
             <form class="ui form" action="{{route('agendamentos.store')}}" method="post" id="Form">
@@ -52,6 +52,14 @@
                             @endforeach
                         </select>
                     </div>
+                    @if(count($veiculos) == 0)
+                    <div class="ui message">
+                        <div class="header">Atenção</div>
+                        <span>Você não possui nenhum veículo cadastrado.
+                            <a href="https://motomechanics.online/public/veiculo/novo">Cadastrar</a>
+                        </span>
+                    </div>
+                    @endif
                     <div class="field">
                         <label class="label">Horário</label>
                         <div class="ui input">
@@ -67,8 +75,6 @@
                         </select>
                     </div>
                 </div>
-
-
                 <div class="field centered">
                     <button class="ui large button" type="button" onclick="ConfirmSubmit()">Agendar</button>
                 </div>
@@ -149,6 +155,10 @@
 <style>
     #modal-submit.ui.modal {
         width: auto !important;
+    }
+
+    footer {
+        position: inherit !important;
     }
 </style>
 <script>

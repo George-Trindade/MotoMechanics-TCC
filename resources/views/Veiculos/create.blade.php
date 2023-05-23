@@ -119,7 +119,8 @@
 
 <script>
     $(document).ready(function() {
-
+        $('#agendamentos').removeClass("active");
+        $('#veiculos').addClass("active");
         // fix menu when passed
         $('.masthead')
             .visibility({
