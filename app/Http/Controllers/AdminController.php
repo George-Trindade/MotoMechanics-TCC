@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Agendamento;
 use App\Models\Orcamento;
+use App\Models\Agendamento;
 use App\Models\Veiculo;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
@@ -95,6 +95,14 @@ class AdminController extends Controller
         $veiculos = Veiculo::all();
         $agendamentos = DB::table('agendamentos')->where('status', 'LIKE', 'solicitado')->get();
         $html = view('Admin/table', compact('users', 'agendamentos', 'veiculos'))->render();
+        return response()->json(['html' => $html]);
+    }
+    public function ajaxOrcamento()
+    {
+        $users = User::All();
+        $veiculos = Veiculo::all();
+        $orcamentos = DB::table('orcamentos')->get();
+        $html = view('Admin/table_orcamento', compact('users', 'orcamentos', 'veiculos'))->render();
         return response()->json(['html' => $html]);
     }
 }

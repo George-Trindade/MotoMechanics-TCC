@@ -49,6 +49,7 @@ Route::get('/admin/agendamentos/conclui{id}', [AdminController::class, 'editDone
 Route::put('/admin/agendamentos/conclui/{id}', [AdminController::class, 'concluiAgendamentos'])->name('admin.concluiAgendamentos')->middleware('admin');
 Route::delete('/admin/agendamentos/delete/{id}', [AdminController::class, 'destroyAgendamentos'])->name('admin.destroyAgendamentos')->middleware('admin');
 Route::get('/admin/agendamentos/get/ajaxsolicitados', [AdminController::class, 'ajaxAgendamento'])->name('admin.ajaxSolicitados')->middleware('admin');
+Route::get('/admin/orcamentos/get/ajaxorcamentos', [AdminController::class, 'ajaxOrcamento'])->name('admin.ajaxOrcamentos')->middleware('admin');
 Route::get('/admin/orcamentos', [AdminController::class, 'listaOrcamentos'])->name('admin.listaOrcamentos')->middleware('admin');
 Route::get('/admin/orcamentos/ver/{id}', [AdminController::class, 'showOrcamento'])->name('admin.showOrcamentos')->middleware('admin');
 

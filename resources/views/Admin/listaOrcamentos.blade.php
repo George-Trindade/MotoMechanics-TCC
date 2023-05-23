@@ -21,20 +21,56 @@
 
 <script>
     $(document).ready(function() {
+        $('#update').on('click', function() {
+            $("#geral").css({
+                display: "none"
+            });
+            $("#div-loader").css({
+                display: "flex"
+            });
+            $("#loader").css({
+                display: "block"
+            });
+
+            $.ajax("/admin/orcamentos/get/ajaxorcamentos", {
+                dataType: "json",
+                success: function(data) {
+                    $("#tabela-nova").html(data["html"]);
+                    $("#table-solicitado").DataTable({});
+                    $("#div-loader").css({
+                        display: "none"
+                    });
+                    $("#loader").css({
+                        display: "none"
+                    });
+                    $("#geral").css({
+                        display: "block"
+                    });
+                },
+            });
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+            });
+        });
         $('#table-solicitado').DataTable();
         $('#table-atendido').DataTable();
 
     });
 </script>
 
+<span>
+    <div class="body-loader" id="div-loader"><span class="loader" id="loader"></span></div>
+</span>
 
 <section id=geral class="content">
-
+    <div id="tabela-nova"></div>
     <div class="card"><!-- Collapsed fechado:class="collapsed-card"-->
         <div class="card-header">
             <h3 class="card-title">Solicitações</h3>
             <div class="card-tools">
-                <button type="button" class="btn bg-orange btn-sm" onclick="AtualizaSolicitacao()">
+                <button id='update' type="button" class="btn bg-orange btn-sm">
                     <ion-icon name="reload-circle-outline" style="font-size: 22px;"></ion-icon>
                 </button>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
