@@ -164,5 +164,9 @@
         .ui.buttons .or {
             margin: 0.25em;
         }
+
+        .dimmable {
+            max-height: 200px;
+        }
     }
 </style>
