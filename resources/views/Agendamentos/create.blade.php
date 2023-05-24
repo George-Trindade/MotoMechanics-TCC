@@ -48,7 +48,11 @@
                         <select class="ui fluid dropdown" name="veiculo_id" id="veiculo_id">
                             <option value="">Selecione um veículo</option>
                             @foreach($veiculos as $veiculo)
+                            @if($veiculo->id==$orcamentos->veiculo_id)
+                            <option value="{{$veiculo->id}}" selected>{{$veiculo->Modelo}}</option>
+                            @else
                             <option value="{{$veiculo->id}}">{{$veiculo->Modelo}}</option>
+                            @endif
                             @endforeach
                         </select>
                     </div>
@@ -70,9 +74,11 @@
                     </div>
                     <div class="field">
                         <label class="label">Serviço</label>
+                        <span id='orcamento-servico' hidden>{{$orcamentos->servico}}</span>
                         <select class="ui search fluid dropdown" id="servico" name="servico" value="{{old('Servico')}}">
 
                         </select>
+
                     </div>
                 </div>
                 <div class="field centered">
@@ -188,14 +194,23 @@
         var select = $("#servico");
         select.append('<option value="">Selecione um serviço</option>');
         $.each(servicos, function(value, text) {
-            select.append('<option value="' + value + '">' + text + '</option>');
+            if ($('#orcamento-servico').text() == value) {
+                select.append('<option selected value="' + value + '">' + text + '</option>');
+            } else {
+
+                select.append('<option value="' + value + '">' + text + '</option>');
+            }
+
         });
         select.dropdown();
-
 
         $('#select-horarios').dropdown();
         $('#veiculo_id').dropdown();
         $('#servico').dropdown();
+
+
+
+
         // fix menu when passed
         $('.masthead')
             .visibility({

@@ -132,9 +132,12 @@
                             </div>
                             <div class="extra content centered">
                                 <div class="ui buttons">
+                                    <a href="{{ route('agendamentos.create_orcamento', $orcamento->id) }}" class="ui button same-size-button">Agendar</a>
+                                    <div class="or" data-text="ou"></div>
                                     <a href="{{ route('orcamento.show', $orcamento->id) }}" class="ui teal button same-size-button">Visualizar</a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     @endif

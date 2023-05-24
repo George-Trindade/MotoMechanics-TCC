@@ -32,6 +32,7 @@ Route::put('/meusdados/edit/{id}', [RegisteredUserController::class, 'update'])-
 //Agendamentos
 Route::get('/agendamentos/', [AgendamentosController::class, 'index'])->name('agendamentos.index')->middleware('auth');
 Route::get('/agendamentos/novo', [AgendamentosController::class, 'create'])->name('agendamentos.create')->middleware('auth');
+Route::get('/agendamentos/agendar/{id}', [AgendamentosController::class, 'create_orcamento'])->name('agendamentos.create_orcamento')->middleware('auth');
 Route::post('/agendamentos/novo', [AgendamentosController::class, 'store'])->name('agendamentos.store')->middleware('auth');
 Route::delete('/agendamentos/{id}', [AgendamentosController::class, 'destroy'])->name('agendamentos.destroy')->middleware('auth');
 Route::get('/agendamentos/alterar/{id}', [AgendamentosController::class, 'edit'])->name('agendamentos.edit')->middleware('auth');
