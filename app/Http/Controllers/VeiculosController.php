@@ -28,7 +28,7 @@ class VeiculosController extends Controller
             'Ano' => 'required|max:10',
             'Cor' => 'required|max:20',
             'Placa' => 'required|unique:veiculos|max:10',
-            'fotoveiculo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'fotoveiculo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'user_id' => 'required|exists:users,id'
         ]);
         $veiculo = Veiculo::create($request->all());
