@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <!-- <img src="https://motomechanics.online/public/storage/veiculos/{{$veiculo->fotoveiculo}}"> -->
-                <img src="https://motomechanics.online/public/assets/veiculos/{{$veiculo->fotoveiculo}}">
+                <img id="foto_veiculo" src="https://motomechanics.online/public/assets/veiculos/{{$veiculo->fotoveiculo}}">
             </div>
             <div class="content">
                 <div class="header">
@@ -165,7 +165,7 @@
             margin: 0.25em;
         }
 
-        .dimmable {
+        #foto_veiculo {
             max-height: 200px;
         }
     }
