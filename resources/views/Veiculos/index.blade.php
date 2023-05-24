@@ -56,12 +56,12 @@
                 <img id="foto_veiculo" src="https://motomechanics.online/public/assets/orcamentos/fotos/sem-foto.png">
                 @endif
             </div>
-            <div class="content">
+            <div class="content center aligned">
                 <div class="header">
                     {{ $veiculo->Modelo }}
                 </div>
                 <div class="meta">
-                    <a class="group">{{ $veiculo->Placa }}</a>
+                    <a class="group">Placa: {{ $veiculo->Placa }}</a>
                 </div>
                 <div class="description">Ano: {{ $veiculo->Ano }} | Cor: {{ $veiculo->Cor }}</div>
             </div>
