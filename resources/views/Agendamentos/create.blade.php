@@ -48,8 +48,10 @@
                         <select class="ui fluid dropdown" name="veiculo_id" id="veiculo_id">
                             <option value="">Selecione um veículo</option>
                             @foreach($veiculos as $veiculo)
+                            @if($orcamentos!=[])
                             @if($veiculo->id==$orcamentos->veiculo_id)
                             <option value="{{$veiculo->id}}" selected>{{$veiculo->Modelo}}</option>
+                            @endif
                             @else
                             <option value="{{$veiculo->id}}">{{$veiculo->Modelo}}</option>
                             @endif
@@ -74,7 +76,11 @@
                     </div>
                     <div class="field">
                         <label class="label">Serviço</label>
+                        @if($orcamentos!=[])
                         <span id='orcamento-servico' hidden>{{$orcamentos->servico}}</span>
+                        @else
+                        <span id='orcamento-servico' hidden></span>
+                        @endif
                         <select class="ui search fluid dropdown" id="servico" name="servico" value="{{old('Servico')}}">
 
                         </select>
