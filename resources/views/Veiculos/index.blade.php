@@ -169,6 +169,10 @@
             margin: 0.25em;
         }
 
+        #cards {
+            min-height: 600px !important;
+        }
+
         #foto_veiculo {
             max-height: 300px;
             max-width: 100%;
