@@ -50,7 +50,11 @@
                     </div>
                 </div>
                 <!-- <img src="https://motomechanics.online/public/storage/veiculos/{{$veiculo->fotoveiculo}}"> -->
+                @if($veiculo->fotoveiculo!='')
                 <img id="foto_veiculo" src="https://motomechanics.online/public/assets/veiculos/{{$veiculo->fotoveiculo}}">
+                @else
+                <img id="foto_veiculo" src="https://motomechanics.online/public/assets/orcamentos/fotos/sem-foto.png">
+                @endif
             </div>
             <div class="content">
                 <div class="header">
@@ -166,7 +170,8 @@
         }
 
         #foto_veiculo {
-            max-height: 200px;
+            max-height: 300px;
+            max-width: 100%;
         }
     }
 </style>
