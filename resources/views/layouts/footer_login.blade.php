@@ -1,4 +1,4 @@
-<footer class="ui inverted vertical segment" style="position: fixed; bottom: 0; width:100%;">
+<footer class="ui inverted vertical segment" style="bottom: 0; width:100%;">
     <div class="ui container">
         <div class="ui stackable grid equal height center aligned">
             <div class="sixteen wide mobile eight wide tablet eight wide computer column">

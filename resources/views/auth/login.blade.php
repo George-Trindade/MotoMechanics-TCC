@@ -78,6 +78,7 @@
         #paddingtop {
             padding-top: 60px !important;
             align-self: flex-start !important;
+            min-height: 600px !important;
         }
 
         .headerLogin {
@@ -90,6 +91,7 @@
         }
 
         #div_geral {
+
             margin: 0 !important;
         }
 
@@ -104,7 +106,7 @@
         }
 
         .footer {
-            position: fixed;
+            position: inherit !important;
             bottom: 0;
             left: 0;
             right: 0;
