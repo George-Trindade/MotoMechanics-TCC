@@ -46,8 +46,8 @@
     </script>
     @endif
 
-    <div class="ui container centered grid">
-        <h2 class="center aligned">Cadastre o seu orçamento</h2>
+    <div id="form-orcamento" class="ui container centered grid">
+        <h2 class="center aligned">Solicite um orçamento do serviço desejado</h2>
         <div class="ten wide column">
             <form id="form-veiculo" class="ui form" action="{{route('orcamentos.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -213,5 +213,19 @@
 
     #modal-submit.ui.modal {
         width: auto !important;
+    }
+
+    #form-orcamento {
+        min-height: 700px !important;
+    }
+
+    #form-orcamento>h2 {
+        margin-bottom: 0px !important;
+        padding-bottom: 0px !important;
+    }
+
+    #form-orcamento>.ten.wide.column {
+        margin-top: 0px !important;
+        padding-top: 0px !important;
     }
 </style>

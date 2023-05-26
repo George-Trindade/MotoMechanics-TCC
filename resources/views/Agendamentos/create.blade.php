@@ -30,7 +30,7 @@
     @include('components.menu')
     <div id='conteudo' class="ui container centered grid">
         <h2 class="center aligned">Faça um agendamento para o serviço a ser realizado</h2>
-        <div class="ten wide column">
+        <div id="form" class="ten wide column">
             <form class="ui form" action="{{route('agendamentos.store')}}" method="post" id="Form">
                 @csrf
                 <div class="field">
@@ -167,6 +167,10 @@
 <style>
     #modal-submit.ui.modal {
         width: auto !important;
+    }
+
+    #form {
+        min-height: 600px;
     }
 
     footer {

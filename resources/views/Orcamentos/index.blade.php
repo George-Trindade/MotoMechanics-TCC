@@ -91,9 +91,9 @@
                     <div class="ui center aligned huge message">
                         <div class="content">
                             <div class="header">
-                                Não há histórico de serviços solicitados!
+                                Não há histórico de orçamentos solicitados!
                             </div>
-                            Faça a solicitação de um novo agendamento.
+                            Faça a solicitação de um novo orçamento.
                         </div>
                     </div>
                     @endif
@@ -147,7 +147,7 @@
                 <div class="ui center aligned huge message">
                     <div class="content">
                         <div class="header">
-                            Não há histórico de serviços concluídos!
+                            Não há histórico de orçamentos atendidos!
                         </div>
                         Porquê não tenta atualizar a página?
                     </div>
