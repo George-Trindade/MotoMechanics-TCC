@@ -49,7 +49,7 @@ class AdminController extends Controller
         // Transforma as fotos do problema em um array de objetos
         $fotosProblema = json_decode($orcamento->fotos_problema);
 
-        return view('admin.showOrcamento', compact('orcamento', 'fotosProblema', 'veiculos'));
+        return view('Admin.showOrcamento', compact('orcamento', 'fotosProblema', 'veiculos'));
     }
 
 
