@@ -193,7 +193,7 @@
                             <i class="poll horizontal icon"></i> Descrição do Problema
                         </h4>
                         <div class="ui bottom attached segment">
-                            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus error vel hic reprehenderit ipsam, eligendi sapiente accusamus non. Vero cum dicta alias eligendi pariatur blanditiis quaerat quam quis mollitia maxime.</div>
+                            <div>{{$orcamento->descricao_problema}}</div>
                         </div>
                     </div>
 
