@@ -41,7 +41,11 @@
             <div class="ui centered stackable grid center" style="padding-top: 15px;">
                 <div class="four wide column" style="width: auto!important;">
                     <div class="ui image">
+                        @if(Auth::user()->avatar=='')
+                        <img style="height: 175px;" src="{{ asset('public/assets/orcamentos/fotos/sem-foto.png') }}" alt="Foto do usuário">
+                        @else
                         <img style="height: 175px;" src="{{ asset('public/assets/users/' . Auth::user()->avatar) }}" alt="Foto do usuário">
+                        @endif
                     </div>
                 </div>
                 <div class="twelve wide computer only column">

@@ -18,13 +18,17 @@
 <!-- Sidebar Menu -->
 <div class="ui vertical inverted sidebar menu">
     <div class="item">
+        @if(Auth::user()->avatar=='')
+        <img class="ui avatar image" src="{{ asset('public/assets/img/user-foto.jpg') }}">
+        @else
         <img class="ui avatar image" src="{{ asset('public/assets/users/' . Auth::user()->avatar) }}">
+        @endif
         <span class="ui text medium">{{ Auth::user()->name }}</span>
     </div>
     <a class="item" href="{{ route('agendamentos.index') }}">Agendamentos <i class="calendar outline icon"></i> </a>
     <a class="item" href="{{ route('orcamentos.index') }}">Orçamentos <i class="donate icon"></i></a>
     <a class="item" href="{{ route('veiculos.index') }}">Meus veículos <i class="motorcycle icon"></i></a>
-    <a class="item">Meus dados <i class="user alternate icon"></i></a>
+    <a class="item" href="{{route('usuario.index')}}">Meus dados <i class="user alternate icon"></i></a>
     <a class="item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
         Sair
         <i class="sign out alternate icon"></i>
