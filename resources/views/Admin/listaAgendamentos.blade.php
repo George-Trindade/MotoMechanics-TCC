@@ -141,10 +141,10 @@
                                 <span class="badge badge-success">{{$agendamento->status}}</span>
                             </td>
                             <td class="project-actions text-right">
-                                <form action="{{route('admin.concluiAgendamentos',$agendamento->id)}}" method="post" id='FormAgendado'>
+                                <form action="{{route('admin.concluiAgendamentos',$agendamento->id)}}" method="post" id='FormAgendado{{ $agendamento->id }}'>
                                     @method("put")
                                     @csrf
-                                    <button type="button" class="btn bg-lime btn-sm" onclick="ConcluiAgendamento()">
+                                    <button type="button" class="btn bg-lime btn-sm" onclick="ConcluiAgendamento('FormAgendado{{ $agendamento->id }}')">
                                         <ion-icon name="checkbox-outline" style="font-size: 22px;"></ion-icon>
                                     </button>
                                 </form>

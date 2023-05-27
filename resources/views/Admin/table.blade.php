@@ -80,13 +80,15 @@
                             <span class="badge bg-warning">{{$agendamento->status}}</span>
                         </td>
                         <td class="project-actions text-right">
-                            <form action="{{route('admin.confirmaAgendamentos',$agendamento->id)}}" method="post" id="FormSolicitacao">
+
+                            <form action="{{ route('admin.confirmaAgendamentos', $agendamento->id) }}" method="post" id="FormSolicitacao{{ $agendamento->id }}">
                                 @method("put")
                                 @csrf
-                                <button type="button" class="btn bg-lime btn-sm" onclick="ConfirmaSolicitacao()">
+                                <button type="button" class="btn bg-lime btn-sm" onclick="ConfirmaSolicitacao('FormSolicitacao{{ $agendamento->id }}')">
                                     <ion-icon name="checkbox-outline" style="font-size: 22px;"></ion-icon>
                                 </button>
                             </form>
+
                         </td>
                         <td>
                             <form action="{{route('admin.destroyAgendamentos',$agendamento->id)}}" method="post" id='FormDeleteSolicitacao'>

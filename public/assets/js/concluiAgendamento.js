@@ -1,17 +1,17 @@
-function ConcluiAgendamento() {
+function ConcluiAgendamento(formId) {
     var x = confirm("Tem certeza?");
     if (x) {
-        document.getElementById("FormAgendado").submit();
+        document.getElementById(formId).submit();
         return true;
     } else {
         event.preventDefault();
         return false;
     }
 }
-function ConfirmaSolicitacao() {
+function ConfirmaSolicitacao(formId) {
     var x = confirm("Tem certeza?");
     if (x) {
-        document.getElementById("FormSolicitacao").submit();
+        document.getElementById(formId).submit();
         return true;
     } else {
         event.preventDefault();

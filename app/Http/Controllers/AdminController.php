@@ -56,7 +56,9 @@ class AdminController extends Controller
     public function editAgendamentos(Request $request, $id)
     {
         $agendamentos = Agendamento::find($id);
-        return Redirect::route('admin.confirmaAgendamentos');
+        // Atualize o modelo $agendamentos aqui, se necessário
+        $agendamentos->update($request->all());
+        return redirect()->route('admin.confirmaAgendamentos', $agendamentos->id);
     }
     public function editDoneAgendamentos(Request $request, $id)
     {

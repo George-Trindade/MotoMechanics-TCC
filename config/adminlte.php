@@ -65,7 +65,7 @@ return [
 
 
     'logo' => '<b>&nbspMotoMechanics</b><br>',
-    'logo_img' => '/vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'public/vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image-xs',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-lg',
@@ -87,7 +87,7 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => '/vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'public/vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -110,7 +110,7 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => '/vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'public/vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
             'width' => 60,
