@@ -17,7 +17,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+        if (Auth::check()) {
+            // O usuário já está logado
+            return redirect()->route('agendamentos.index');
+        } else {
+            return view('auth.login');
+        }
     }
 
     /**

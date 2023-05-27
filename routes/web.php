@@ -7,12 +7,19 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VeiculosController;
 use App\Http\Controllers\OrcamentoController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use Illuminate\Support\Facades\Auth;
 
-Route::get('/teste', [VeiculosController::class, 'teste']);
-Route::get('/base', [VeiculosController::class, 'base']);
+// Route::get('/teste', [VeiculosController::class, 'teste']);
+// Route::get('/base', [VeiculosController::class, 'base']);
 
 
 Route::get('/', function () {
+    if (Auth::check()) {
+        // O usuário já está logado
+        return redirect()->route('agendamentos.index');
+    } else {
+        return view('auth.login');
+    }
     return view('auth.login');
 });
 
