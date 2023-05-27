@@ -65,14 +65,14 @@ class VeiculosController extends Controller
 
     public function show(Veiculo $veiculo)
     {
-        return view('veiculos.show', compact('veiculo'));
+        return view('Veiculos.show', compact('veiculo'));
     }
 
 
     public function edit(Request $request, $id)
     {
         $veiculo = Veiculo::find($id);
-        return view('veiculos.update', compact('veiculo'));
+        return view('Veiculos.update', compact('veiculo'));
     }
 
     public function update(Request $request, $id)
